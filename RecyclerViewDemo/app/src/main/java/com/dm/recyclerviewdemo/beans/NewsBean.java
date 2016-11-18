@@ -7,11 +7,12 @@ import java.io.Serializable;
  * Created by dm on 16-11-17.
  */
 public class NewsBean implements Serializable {
-    private String ctime;
-    private String title;
-    private String description;
-    private String picUrl;
-    private String url;
+    private String ctime;           // 新闻发布时间
+    private String title;           // 新闻标题
+    private String description;     // 新闻描述
+    private String picUrl;          // 新闻配图
+    private String url;             // 新闻链接地址
+    private boolean isSelected = false;     // 是否已读
 
     public NewsBean() {
     }
@@ -54,5 +55,13 @@ public class NewsBean implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

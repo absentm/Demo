@@ -1,6 +1,7 @@
 package com.dm.recyclerviewdemo.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,6 +63,16 @@ public class MainPagesAdapter
         holder.newsItemTitleTv.setText(mDatas.get(position).getTitle());
         holder.newsItemTimeTv.setText(mDatas.get(position).getCtime());
 
+        int textColor = Color.parseColor("#CC000000");
+        int textColorChange = Color.parseColor("#40000000");
+        if (mDatas.get(position).isSelected()) {
+            holder.newsItemTitleTv.setTextColor(textColorChange);
+            holder.newsItemTimeTv.setTextColor(textColorChange);
+        } else {
+            holder.newsItemTitleTv.setTextColor(textColor);
+            holder.newsItemTimeTv.setTextColor(textColor);
+        }
+
         // 将数据保存在itemView的Tag中，以便点击时进行获取
         holder.itemView.setTag(mDatas.get(position));
     }
@@ -75,14 +86,16 @@ public class MainPagesAdapter
     public void onClick(View view) {
         if (mOnItemClickListener != null) {
             //注意这里使用getTag方法获取数据
-            mOnItemClickListener.onItemClick(view, (NewsBean) view.getTag());
+            mOnItemClickListener
+                    .onItemClick(view, (NewsBean) view.getTag());
         }
     }
 
     @Override
     public boolean onLongClick(View view) {
         if (mOnItemLongClickListener != null) {
-            mOnItemLongClickListener.onItemLongClick(view, (NewsBean) view.getTag());
+            mOnItemLongClickListener
+                    .onItemLongClick(view, (NewsBean) view.getTag());
         }
 
         return false;

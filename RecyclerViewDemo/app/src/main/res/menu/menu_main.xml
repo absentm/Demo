@@ -2,16 +2,34 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.dm.recyclerviewdemo.activitys.MainActivity">
+    
+    <item
+        android:id="@+id/action_cardview"
+        android:orderInCategory="100"
+        android:title="@string/action_cardview"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_no_gapview"
+        android:orderInCategory="100"
+        android:title="@string/action_no_gapview"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_fluview"
+        android:orderInCategory="100"
+        android:title="@string/action_fluview"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_gridview"
+        android:orderInCategory="100"
+        android:title="@string/action_gridview"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         android:title="@string/action_about"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/action_switch"
-        android:orderInCategory="100"
-        android:title="@string/action_switch"
         app:showAsAction="never"/>
 </menu>

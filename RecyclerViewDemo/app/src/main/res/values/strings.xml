@@ -2,5 +2,9 @@
     <string name="app_name">RecyclerViewDemo</string>
     <string name="action_switch">切换</string>
     <string name="action_about">关于</string>
+    <string name="action_fluview">流式布局</string>
+    <string name="action_gridview">网格布局</string>
+    <string name="action_cardview">卡片布局</string>
+    <string name="action_no_gapview">无间隔布局</string>
 
 </resources>

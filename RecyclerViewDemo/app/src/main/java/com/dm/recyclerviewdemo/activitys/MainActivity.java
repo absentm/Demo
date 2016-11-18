@@ -1,12 +1,12 @@
 package com.dm.recyclerviewdemo.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,9 +15,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.dm.recyclerviewdemo.R;
 import com.dm.recyclerviewdemo.adapters.MainPagesAdapter;
 import com.dm.recyclerviewdemo.beans.NewsBean;
@@ -28,12 +31,17 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
+import static com.dm.recyclerviewdemo.R.id.fab;
+
+public class MainActivity extends BaseActivity
         implements View.OnClickListener,
         MainPagesAdapter.OnRecyclerViewItemClickListener,
         MainPagesAdapter.OnRecyclerViewItemLongClickListener {
 
     private static final String TAG = "MainActivity";
+
+    private Animation animationIn;  //进入动画
+    private Animation animationOut; //退出动画
 
     private CoordinatorLayout mCoordinatorLayout;
     private Toolbar mToolbar;
@@ -46,7 +54,6 @@ public class MainActivity extends AppCompatActivity
     private MainPagesAdapter mMainPagesAdapter;
 
     private boolean isConnect;
-    private NewsInfosBean mNewsInfosBean;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -55,9 +62,9 @@ public class MainActivity extends AppCompatActivity
             Log.d("FindVideoAty", " Json: " + newsJsonStr);
 
             Gson gson = new Gson();
-            mNewsInfosBean = gson.fromJson(newsJsonStr, NewsInfosBean.class);
-            if ((mNewsInfosBean.getCode() == 200) && mNewsInfosBean != null) {
-                mDatas = mNewsInfosBean.getNewslist();
+            NewsInfosBean newsInfosBean = gson.fromJson(newsJsonStr, NewsInfosBean.class);
+            if ((newsInfosBean.getCode() == 200) && newsInfosBean != null) {
+                mDatas = newsInfosBean.getNewslist();
 
                 mMainPagesAdapter = new MainPagesAdapter(MainActivity.this, mDatas);
                 mLayoutManager = new LinearLayoutManager(MainActivity.this,
@@ -66,7 +73,9 @@ public class MainActivity extends AppCompatActivity
                 mRecyclerView.setLayoutManager(mLayoutManager);
                 mRecyclerView.setItemAnimator(new DefaultItemAnimator());//默认动画
                 mRecyclerView.setHasFixedSize(true);//效率最高
+
                 mMainPagesAdapter.setOnItemClickListener(MainActivity.this);
+                mMainPagesAdapter.setOnItemLongClickListener(MainActivity.this);
             } else {
                 Snackbar.make(mCoordinatorLayout, "数据加载出错 !!!",
                         Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -81,18 +90,28 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initAnimation();
         initView();
+        eventsDeal();
+    }
+
+    private void initAnimation() {
+        animationIn = AnimationUtils.loadAnimation(this, R.anim.fab_fade_in);
+        animationOut = AnimationUtils.loadAnimation(this, R.anim.fab_fade_out);
     }
 
     private void initView() {
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator);
+
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+
+        mFloatingActionButton = (FloatingActionButton) findViewById(fab);
         mFloatingActionButton.setOnClickListener(MainActivity.this);
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
         mProgressBar.setVisibility(View.VISIBLE);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
         isConnect = SystemUtils.checkNetworkConnection(MainActivity.this);
@@ -101,10 +120,15 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void run() {
                     String newsDatas = SystemUtils.getNewsJsonStr();
+                    Log.i(TAG, "newsDatas >>> " + newsDatas);
                     if (!newsDatas.equals("")) {
                         Message message = mHandler.obtainMessage();
                         message.obj = newsDatas;
                         mHandler.sendMessage(message);
+                    } else {
+                        mProgressBar.setVisibility(View.GONE);
+                        Snackbar.make(mCoordinatorLayout, "数据加载出错 !!!",
+                                Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     }
                 }
             }).start();
@@ -113,6 +137,30 @@ public class MainActivity extends AppCompatActivity
                     Snackbar.LENGTH_LONG).setAction("Action", null).show();
             mProgressBar.setVisibility(View.GONE);
         }
+    }
+
+    private void eventsDeal() {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                //上滑比并且按钮不可见 显示按钮,
+                //下滑并且按钮可见 隐藏按钮
+                if ((dy < 0) && (mFloatingActionButton.getVisibility() == View.GONE)) {
+                    mFloatingActionButton.startAnimation(animationIn);
+                    mFloatingActionButton.setVisibility(View.VISIBLE);
+                } else if ((dy > 0) && (mFloatingActionButton.getVisibility() == View.VISIBLE)) {
+                    mFloatingActionButton.startAnimation(animationOut);
+                    mFloatingActionButton.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     @Override
@@ -124,8 +172,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_switch:
-                Toast.makeText(this, "切换", Toast.LENGTH_SHORT).show();
+            case R.id.action_no_gapview:
+                Toast.makeText(this, "无间隔布局", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_cardview:
+                Toast.makeText(this, "卡片布局", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_fluview:
+                Toast.makeText(this, "流式布局", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_gridview:
+                Toast.makeText(this, "网格布局", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_about:
                 Toast.makeText(this, "关于", Toast.LENGTH_SHORT).show();
@@ -138,10 +195,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.fab:
-//                Snackbar.make(view, "Replace with your own action",
-//                        Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+            case fab:
+                //返回顶部
+                mLayoutManager.smoothScrollToPosition(mRecyclerView, null, 0);
                 break;
         }
 
@@ -149,12 +205,46 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(View view, NewsBean data) {
+        // 标记已读，设置标记位
+        data.setSelected(true);
+        mMainPagesAdapter.notifyDataSetChanged();
 
+        // 跳转至详情页
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("newsInfos", data);
+        intent.setClass(MainActivity.this, ItemDetailAty.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override
-    public void onItemLongClick(View view, NewsBean data) {
+    public void onItemLongClick(View view, final NewsBean data) {
+        new MaterialDialog.Builder(MainActivity.this)
+                .title("标记")
+                .items(R.array.tag_values)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog,
+                                            View itemView,
+                                            int position,
+                                            CharSequence text) {
 
+                        String listItemStr = (String) text;
+                        Log.d(TAG, "listItemStr >>> " + listItemStr);
+                        switch (listItemStr) {
+                            case "已读":
+                                data.setSelected(true);
+                                mMainPagesAdapter.notifyDataSetChanged();
+                                break;
+                            case "未读":
+                                data.setSelected(false);
+                                mMainPagesAdapter.notifyDataSetChanged();
+                                break;
+                        }
+
+                    }
+                }).show();
     }
 
     @Override
