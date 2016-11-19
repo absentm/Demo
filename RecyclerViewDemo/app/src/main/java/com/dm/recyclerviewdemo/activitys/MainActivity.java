@@ -8,8 +8,10 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,7 +20,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.dm.recyclerviewdemo.R;
@@ -63,9 +64,10 @@ public class MainActivity extends BaseActivity
 
             Gson gson = new Gson();
             NewsInfosBean newsInfosBean = gson.fromJson(newsJsonStr, NewsInfosBean.class);
-            if ((newsInfosBean.getCode() == 200) && newsInfosBean != null) {
+            if (newsInfosBean.getCode() == 200) {
                 mDatas = newsInfosBean.getNewslist();
 
+                MainPagesAdapter.layoutFlag = 0;
                 mMainPagesAdapter = new MainPagesAdapter(MainActivity.this, mDatas);
                 mLayoutManager = new LinearLayoutManager(MainActivity.this,
                         LinearLayoutManager.VERTICAL, false);
@@ -172,20 +174,27 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_no_gapview:
-                Toast.makeText(this, "无间隔布局", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.action_cardview:
-                Toast.makeText(this, "卡片布局", Toast.LENGTH_SHORT).show();
+                mLayoutManager = new LinearLayoutManager(MainActivity.this,
+                        LinearLayoutManager.VERTICAL, false);
+                initRecycleView(0, mDatas, mLayoutManager);
+                break;
+            case R.id.action_no_gapview:
+                mLayoutManager = new LinearLayoutManager(MainActivity.this,
+                        LinearLayoutManager.VERTICAL, false);
+                initRecycleView(1, mDatas, mLayoutManager);
                 break;
             case R.id.action_fluview:
-                Toast.makeText(this, "流式布局", Toast.LENGTH_SHORT).show();
+                mLayoutManager = new StaggeredGridLayoutManager(2,
+                        StaggeredGridLayoutManager.VERTICAL);
+                initRecycleView(2, mDatas, mLayoutManager);
                 break;
             case R.id.action_gridview:
-                Toast.makeText(this, "网格布局", Toast.LENGTH_SHORT).show();
+                mLayoutManager = new GridLayoutManager(MainActivity.this, 3);
+                initRecycleView(3, mDatas, mLayoutManager);
                 break;
             case R.id.action_about:
-                Toast.makeText(this, "关于", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, AboutAty.class));
                 break;
         }
 
@@ -245,6 +254,21 @@ public class MainActivity extends BaseActivity
 
                     }
                 }).show();
+    }
+
+    private void initRecycleView(int flag,
+                                 List<NewsBean> datas,
+                                 RecyclerView.LayoutManager layoutManager) {
+        MainPagesAdapter.layoutFlag = flag;
+
+        mMainPagesAdapter = new MainPagesAdapter(MainActivity.this, datas);
+        mRecyclerView.setAdapter(mMainPagesAdapter);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());//默认动画
+        mRecyclerView.setHasFixedSize(true);//效率最高
+
+        mMainPagesAdapter.setOnItemClickListener(MainActivity.this);
+        mMainPagesAdapter.setOnItemLongClickListener(MainActivity.this);
     }
 
     @Override

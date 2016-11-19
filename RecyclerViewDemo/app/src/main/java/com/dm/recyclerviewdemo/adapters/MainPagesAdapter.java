@@ -27,6 +27,7 @@ public class MainPagesAdapter
 
     private Context context;
     private List<NewsBean> mDatas;
+    public static int layoutFlag = 0;
 
     // 设置item点击事件的回调函数
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;
@@ -41,7 +42,23 @@ public class MainPagesAdapter
 
     @Override
     public ItemContentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.main_news_item, parent, false);
+        View view;
+        switch (layoutFlag) {
+            case 0:
+                view = LayoutInflater.from(context).inflate(R.layout.main_news_item, parent, false);
+                break;
+            case 1:
+                view = LayoutInflater.from(context).inflate(R.layout.main_news_item_nogap, parent, false);
+                break;
+            case 2:
+            case 3:
+                view = LayoutInflater.from(context).inflate(R.layout.main_news_item_flu, parent, false);
+                break;
+            default:
+                view = LayoutInflater.from(context).inflate(R.layout.main_news_item, parent, false);
+                break;
+        }
+
         MainPagesAdapter.ItemContentHolder viewHolder = new MainPagesAdapter.ItemContentHolder(view);
         //将创建的View注册点击事件
         view.setOnClickListener(this);
@@ -54,7 +71,6 @@ public class MainPagesAdapter
         // 使用Glide图片缓存框架加载图
         Glide.with(context)
                 .load(mDatas.get(position).getPicUrl())
-                .placeholder(R.drawable.icon)
                 .error(R.drawable.icon)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .crossFade()
@@ -86,16 +102,14 @@ public class MainPagesAdapter
     public void onClick(View view) {
         if (mOnItemClickListener != null) {
             //注意这里使用getTag方法获取数据
-            mOnItemClickListener
-                    .onItemClick(view, (NewsBean) view.getTag());
+            mOnItemClickListener.onItemClick(view, (NewsBean) view.getTag());
         }
     }
 
     @Override
     public boolean onLongClick(View view) {
         if (mOnItemLongClickListener != null) {
-            mOnItemLongClickListener
-                    .onItemLongClick(view, (NewsBean) view.getTag());
+            mOnItemLongClickListener.onItemLongClick(view, (NewsBean) view.getTag());
         }
 
         return false;

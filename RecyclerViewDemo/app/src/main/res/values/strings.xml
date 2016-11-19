@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">RecyclerViewDemo</string>
     <string name="action_switch">切换</string>
-    <string name="action_about">关于</string>
+    <string name="action_cardview">卡片布局(默认)</string>
+    <string name="action_no_gapview">无间隔布局</string>
     <string name="action_fluview">流式布局</string>
     <string name="action_gridview">网格布局</string>
-    <string name="action_cardview">卡片布局</string>
-    <string name="action_no_gapview">无间隔布局</string>
+    <string name="action_about">关于</string>
+    <string name="help_str">一个Demo, 关于RecycleView的基本使用, 数据来源于ApiStore的娱乐新闻, 实现了常规用法包括如下:\n\n1. item的click和longClick事件;\n2. RecycleView中同一样式的item不同布局的展示(卡片布局, 无间隔线卡片布局, 网格布局, 瀑布流式布局);\n3. item控件的状态变化处理, 如新闻已读, 未读的标记等\n\n另外, 项目中还包含Thread + Handler用法, Gson解析Json格式数据等内容.\n\nDemo地址： https://github.com/absentm/Demo
+    </string>
+    <string name="used_libs_str">com.daimajia.numberprogressbar:library:1.2@aar\ncom.github.bumptech.glide:glide:3.7.0\ncom.google.code.gson:gson:2.8.0\ncom.afollestad.material-dialogs:commons:0.9.0.1\ncom.jaeger.statusbaruitl:library:1.3.0\nde.hdodenhof:circleimageview:2.1.0
+    </string>
 
 </resources>
