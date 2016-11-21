@@ -36,7 +36,7 @@ public class ItemDetailAty extends BaseActivity {
     }
 
     private void initView() {
-        setTitle("ItemDetail");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mNumberProgressBar = (NumberProgressBar) findViewById(R.id.news_item_npar);
         mWebView = (WebView) findViewById(R.id.news_item_webview);
     }
@@ -57,6 +57,8 @@ public class ItemDetailAty extends BaseActivity {
         mWebView.setWebChromeClient(new ItemDetailAty.MyWebChromeClient());
         mWebView.setWebViewClient(new ItemDetailAty.MyWebViewClient());
         mWebView.loadUrl(mNewsBean.getUrl());
+
+        setTitle(mNewsBean.getTitle());
     }
 
     private class MyWebChromeClient extends WebChromeClient {
@@ -114,6 +116,9 @@ public class ItemDetailAty extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                ItemDetailAty.this.finish();
+                break;
             case R.id.action_share:
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);

@@ -13,6 +13,7 @@ import com.dm.recyclerviewdemo.R;
  * Created by dm on 16-11-19.
  */
 public class AboutAty extends BaseActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +24,7 @@ public class AboutAty extends BaseActivity {
 
     private void initView() {
         setTitle("关于");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -34,6 +36,9 @@ public class AboutAty extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                AboutAty.this.finish();
+                break;
             case R.id.action_share:
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);

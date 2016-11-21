@@ -24,8 +24,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activitys.ItemDetailAty"/>
-        <activity android:name=".activitys.AboutAty"/>
+        <activity
+            android:name=".activitys.ItemDetailAty"/>
+        <activity
+            android:name=".activitys.AboutAty"/>
     </application>
 
 </manifest>
