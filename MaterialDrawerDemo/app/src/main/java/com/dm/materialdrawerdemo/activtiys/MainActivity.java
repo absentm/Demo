@@ -1,7 +1,9 @@
 package com.dm.materialdrawerdemo.activtiys;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import com.dm.materialdrawerdemo.R;
 import com.dm.materialdrawerdemo.fragments.PageFragment;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -28,13 +32,15 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dm.materialdrawerdemo.R.id.toolbar;
-
-
 public class MainActivity extends AppCompatActivity {
     private int barColor = Color.parseColor("#7b1fa2");
 
-    //save our header or result
+    private ViewPager viewPager;
+    private PagerAdapter pagerAdapter;
+    private TabLayout tabLayout;
+    private FloatingActionButton mFloatingActionButton;
+
+    // save our header or result
     private Drawer result = null;
     private Toolbar mToolbar;
     private Bundle mSavedInstanceState;
@@ -45,16 +51,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mSavedInstanceState = savedInstanceState;
 
+        initView();
         initToolbar();
         initViewPagerAndTabs();
         initMatrialDrawer();
+    }
+
+    private void initView() {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab_button);
+        mFloatingActionButton.setImageDrawable(new IconicsDrawable(this)
+                .icon(GoogleMaterial.Icon.gmd_vertical_align_top)
+                .color(Color.WHITE)
+                .sizeDp(18));
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
     }
 
     private void initMatrialDrawer() {
         //Create the drawer
         result = new DrawerBuilder()
                 .withActivity(this)
-                .withTranslucentStatusBar(true)
                 .withToolbar(mToolbar)
                 .withActionBarDrawerToggle(true)
                 .withHeader(R.layout.header)
@@ -67,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
                                 .withName(R.string.drawer_item_free_play)
                                 .withIcon(FontAwesome.Icon.faw_gamepad),
                         new PrimaryDrawerItem()
-                                .withName(R.string.drawer_item_custom)
-                                .withIcon(FontAwesome.Icon.faw_eye),
+                                .withName(R.string.drawer_item_about)
+                                .withIcon(FontAwesome.Icon.faw_user)
+                                .withIdentifier(11),
                         //add some more items to get a scrolling list
                         new SectionDrawerItem()
                                 .withName(R.string.drawer_item_section_header),
@@ -105,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
                                     ((Nameable) drawerItem).getName().getText(MainActivity.this),
                                     Toast.LENGTH_SHORT).show();
                         }
+
+                        if (drawerItem.getIdentifier() == 11) {
+                            startActivity(new Intent(MainActivity.this, AboutAty.class));
+                        }
                         return false;
                     }
                 })
@@ -114,8 +137,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViewPagerAndTabs() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(PageFragment.createInstance(45), getString(R.string.tab_1));
         pagerAdapter.addFragment(PageFragment.createInstance(34), getString(R.string.tab_2));
         pagerAdapter.addFragment(PageFragment.createInstance(5), getString(R.string.tab_3));
@@ -125,12 +147,10 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter.addFragment(PageFragment.createInstance(8), getString(R.string.tab_7));
         pagerAdapter.addFragment(PageFragment.createInstance(24), getString(R.string.tab_8));
         viewPager.setAdapter(pagerAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
     }
 
     private void initToolbar() {
-        mToolbar = (Toolbar) findViewById(toolbar);
         setSupportActionBar(mToolbar);
         mToolbar.setBackgroundColor(barColor);
         setTitle("MateralDrawer - Demo");   // title
@@ -168,15 +188,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static class PagerAdapter extends FragmentPagerAdapter {
-
         private final List<Fragment> fragmentList = new ArrayList<>();
         private final List<String> fragmentTitleList = new ArrayList<>();
 
-        public PagerAdapter(FragmentManager fragmentManager) {
+        PagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             fragmentList.add(fragment);
             fragmentTitleList.add(title);
         }
@@ -219,9 +238,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_about:
-                Toast.makeText(MainActivity.this,
-                        R.string.action_about,
-                        Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, AboutAty.class));
                 break;
         }
 

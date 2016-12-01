@@ -56,4 +56,10 @@
     <string name="tab_6">tab_6</string>
     <string name="tab_7">tab_7</string>
     <string name="tab_8">tab_8</string>
+    <string name="drawer_item_about">About</string>
+    <string name="used_libs_str">com.android.support:recyclerview-v7:24.2.1\ncom.android.support:cardview-v7:24.2.1\ncom.mikepenz:materialdrawer:5.8.0@aar\ncom.mikepenz:iconics-core:2.8.1@aar\ncom.mikepenz:google-material-typeface:2.2.0.3.original@aar\ncom.mikepenz:material-design-iconic-typeface:2.2.0.2@aar\ncom.mikepenz:fontawesome-typeface:4.6.0.3@aar\nblue.aodev:material-values:1.1.1\nde.hdodenhof:circleimageview:2.1.0\n
+    </string>>
+
+    <string name="help_str">一个UI Demo, 实现了如下UI特性:\n\n1. 一个好用的侧滑控件materialdrawer的集成与使用;\n2. Tablayout + ViewPager + Fragment实现顶部滑动导航;\n3. 仿Twitter的Toolbar滑动隐藏与呈现效果\n\nDemo地址： https://github.com/absentm/Demo
+    </string>
 </resources>
