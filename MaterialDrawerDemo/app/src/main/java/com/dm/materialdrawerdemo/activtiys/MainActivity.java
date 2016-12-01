@@ -2,12 +2,20 @@ package com.dm.materialdrawerdemo.activtiys;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.dm.materialdrawerdemo.R;
+import com.dm.materialdrawerdemo.fragments.PageFragment;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -16,6 +24,9 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.dm.materialdrawerdemo.R.id.toolbar;
 
@@ -26,19 +37,26 @@ public class MainActivity extends AppCompatActivity {
     //save our header or result
     private Drawer result = null;
     private Toolbar mToolbar;
+    private Bundle mSavedInstanceState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mSavedInstanceState = savedInstanceState;
 
         initToolbar();
+        initViewPagerAndTabs();
+        initMatrialDrawer();
+    }
 
+    private void initMatrialDrawer() {
         //Create the drawer
         result = new DrawerBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withToolbar(mToolbar)
+                .withActionBarDrawerToggle(true)
                 .withHeader(R.layout.header)
                 .addDrawerItems(
                         new PrimaryDrawerItem()
@@ -46,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
                                 .withIcon(FontAwesome.Icon.faw_home)
                                 .withIdentifier(1),
                         new PrimaryDrawerItem()
-                                .withName(R.string.drawer_item_free_play).
-                                withIcon(FontAwesome.Icon.faw_gamepad),
+                                .withName(R.string.drawer_item_free_play)
+                                .withIcon(FontAwesome.Icon.faw_gamepad),
                         new PrimaryDrawerItem()
                                 .withName(R.string.drawer_item_custom)
                                 .withIcon(FontAwesome.Icon.faw_eye),
@@ -90,20 +108,39 @@ public class MainActivity extends AppCompatActivity {
                         return false;
                     }
                 })
-                .withSavedInstance(savedInstanceState)
+                .withSavedInstance(mSavedInstanceState)
                 .build();
+
+    }
+
+    private void initViewPagerAndTabs() {
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(PageFragment.createInstance(45), getString(R.string.tab_1));
+        pagerAdapter.addFragment(PageFragment.createInstance(34), getString(R.string.tab_2));
+        pagerAdapter.addFragment(PageFragment.createInstance(5), getString(R.string.tab_3));
+        pagerAdapter.addFragment(PageFragment.createInstance(28), getString(R.string.tab_4));
+        pagerAdapter.addFragment(PageFragment.createInstance(30), getString(R.string.tab_5));
+        pagerAdapter.addFragment(PageFragment.createInstance(14), getString(R.string.tab_6));
+        pagerAdapter.addFragment(PageFragment.createInstance(8), getString(R.string.tab_7));
+        pagerAdapter.addFragment(PageFragment.createInstance(24), getString(R.string.tab_8));
+        viewPager.setAdapter(pagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void initToolbar() {
         mToolbar = (Toolbar) findViewById(toolbar);
         setSupportActionBar(mToolbar);
         mToolbar.setBackgroundColor(barColor);
-        setTitle("MateralDrawer - Demo");
+        setTitle("MateralDrawer - Demo");   // title
+//        左侧导航图标
 //        mToolbar.setNavigationIcon(new IconicsDrawable(this)
 //                .icon(GoogleMaterial.Icon.gmd_menu)
 //                .color(Color.WHITE)
 //                .sizeDp(18));
-//
+
+//        左侧导航图标点击事件
 //        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -113,29 +150,51 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        // 右侧菜单, 方法出现在setSupportActionBar()之后失效，使用onCreateOptionsMenu()方法
 //        mToolbar.inflateMenu(R.menu.base_toolbar_menu);//设置右上角的填充菜单
 //        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
 //            @Override
 //            public boolean onMenuItemClick(MenuItem item) {
 //                int menuItemId = item.getItemId();
-//                if (menuItemId == R.id.action_search) {
-//                    Toast.makeText(ToolBarActivity.this , R.string.menu_search , Toast.LENGTH_SHORT).show();
-//
-//                } else if (menuItemId == R.id.action_notification) {
-//                    Toast.makeText(ToolBarActivity.this , R.string.menu_notifications , Toast.LENGTH_SHORT).show();
-//
-//                } else if (menuItemId == R.id.action_item1) {
-//                    Toast.makeText(ToolBarActivity.this , R.string.item_01 , Toast.LENGTH_SHORT).show();
-//
-//                } else if (menuItemId == R.id.action_item2) {
-//                    Toast.makeText(ToolBarActivity.this , R.string.item_02 , Toast.LENGTH_SHORT).show();
-//
+//                if (menuItemId == R.id.action_settings) {
+//                    Toast.makeText(MainActivity.this, R.string.action_settings, Toast.LENGTH_SHORT).show();
+//                } else if (menuItemId == R.id.action_about) {
+//                    Toast.makeText(MainActivity.this, R.string.action_about, Toast.LENGTH_SHORT).show();
 //                }
+//
 //                return true;
 //            }
 //        });
+    }
 
+    static class PagerAdapter extends FragmentPagerAdapter {
 
+        private final List<Fragment> fragmentList = new ArrayList<>();
+        private final List<String> fragmentTitleList = new ArrayList<>();
+
+        public PagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            fragmentList.add(fragment);
+            fragmentTitleList.add(title);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fragmentTitleList.get(position);
+        }
     }
 
     @Override
@@ -145,4 +204,27 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.base_toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Toast.makeText(MainActivity.this,
+                        R.string.action_settings,
+                        Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_about:
+                Toast.makeText(MainActivity.this,
+                        R.string.action_about,
+                        Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

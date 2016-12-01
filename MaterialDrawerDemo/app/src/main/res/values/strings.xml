@@ -47,4 +47,13 @@
     <string name="drawer_item_contact">Contact</string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
+    <string name="action_about">About</string>
+    <string name="tab_1">tab_1</string>
+    <string name="tab_2">tab_2</string>
+    <string name="tab_3">tab_3</string>
+    <string name="tab_4">tab_4</string>
+    <string name="tab_5">tab_5</string>
+    <string name="tab_6">tab_6</string>
+    <string name="tab_7">tab_7</string>
+    <string name="tab_8">tab_8</string>
 </resources>
