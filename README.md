@@ -2,7 +2,7 @@
 
 本项目是一个 Demo 集合, 存放日常写的一些 Demo 代码。
 
-## RecyclerViewDemo
+## [ 1 ] RecyclerViewDemo
 
 Android RecyclerView 使用 Demo, 包涵了如下功能：</br>
 1. RecyclerView 控件的基本用法 ;</br>
@@ -32,7 +32,7 @@ Apk 下载地址: https://github.com/absentm/Demo/blob/master/apk/RecyclerViewDe
 
 --------------------
 
-## [1] MaterailDrawerDemo
+## [ 2 ] MaterailDrawerDemo
 
 一个UI Demo, 实现了如下UI特性:</br>
 1. 一个好用的侧滑控件materialdrawer的集成与使用</br>
@@ -40,17 +40,15 @@ Apk 下载地址: https://github.com/absentm/Demo/blob/master/apk/RecyclerViewDe
 3. 仿Twitter的Toolbar滑动隐藏与呈现效果</br>
 
 </br>
-配套博客地址:
+配套博客地址: waiting ....
 </br>
-Apk 下载地址:
+Apk 下载地址: https://github.com/absentm/Demo/blob/master/apk/MaterialDrawerDemo.apk
 </br>
 
 展示:
 
-![MaterailDrawerDemo.gif](https://o8zyn0sct.qnssl.com/MaterailDrawerDemo.gif)
+![MaterailDrawerDemo.gif](https://o8zyn0sct.qnssl.com/MaterailDrawerDemo.gif "MaterailDrawerDemo.gif")
 
-配套博客地址:
-</br>
-Apk 下载地址:
+
 
 --------------------
