@@ -3,6 +3,7 @@
 *.ap_
 !sslk-beta-106.apk
 !RecyclerViewDemo.apk
+!MaterialDrawerDemo.apk
 
 # Files for the ART/Dalvik VM
 *.dex
