@@ -50,5 +50,17 @@ Apk 下载地址: https://github.com/absentm/Demo/blob/master/apk/MaterialDrawer
 ![MaterailDrawerDemo.gif](https://o8zyn0sct.qnssl.com/MaterailDrawerDemo.gif "MaterailDrawerDemo.gif")
 
 
+--------------------
+
+## [ 3 ] OfficailDemo
+
+Google 官方提供的 UI Demo， 详情见如下表格内容， 相关 APK 下载地址请见项目 apk 文件夹下：
+
+| Demo名称 | 描述 | 备注 |
+| ------| ------ | ------ |
+| NavigationDrawerDemo | 官方侧滑菜单导航样例 | - |
+| ScrollingDemo | 官方 CollapsingToolbarLayout 折叠效果样例 | - |
+| CoordinatorExamples | @Saul Molinero 总结的加强版折叠效果样例 | https://www.aswifter.com/2015/11/12/mastering-coordinator/ |
+| LoginDemo | 官方 Material Design 登录样例 | - |
 
 --------------------
