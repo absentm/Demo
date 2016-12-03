@@ -4,6 +4,10 @@
 !sslk-beta-106.apk
 !RecyclerViewDemo.apk
 !MaterialDrawerDemo.apk
+!CoordinatorExamples.apk
+!LoginDemo.apk
+!NavigationDrawerDemo.apk
+!ScrollingDemo.apk
 
 # Files for the ART/Dalvik VM
 *.dex
