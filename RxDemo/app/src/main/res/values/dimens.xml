@@ -7,4 +7,6 @@
     <dimen name="text_size_mid">16sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
     <dimen name="text_size_ssmall">12sp</dimen>
+    <dimen name="refresh_header_height_twitter">100dp</dimen>
+    <dimen name="load_more_footer_height_classic">100dp</dimen>
 </resources>

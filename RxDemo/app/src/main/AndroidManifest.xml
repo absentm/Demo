@@ -18,6 +18,7 @@
 
         <activity android:name=".activitys.ResAty"/>
         <activity android:name=".activitys.FragmentAty"/>
+        <activity android:name=".activitys.ListAty"/>
     </application>
 
 </manifest>

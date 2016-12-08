@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.dm.rxdemo.R;
@@ -44,18 +43,15 @@ public class MainActivity extends AppCompatActivity {
                                             View view,
                                             int which,
                                             CharSequence text) {
-                        Toast.makeText(MainActivity.this,
-                                "which = " + which,
-                                Toast.LENGTH_SHORT).show();
-                        String textStr = (String) text;
-                        switch (textStr) {
-                            case "Res":
+                        switch (which) {
+                            case 0:
                                 startActivity(new Intent(MainActivity.this, ResAty.class));
                                 break;
-                            case "Fragment and ViewHolder":
+                            case 1:
                                 startActivity(new Intent(MainActivity.this, FragmentAty.class));
                                 break;
-                            case "List":
+                            case 2:
+                                startActivity(new Intent(MainActivity.this, ListAty.class));
                                 break;
                         }
                     }

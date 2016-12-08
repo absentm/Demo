@@ -39,6 +39,24 @@ public class FragmentAdapter
     // 设置item点击事件的回调函数
     private OnRecyclerViewItemLongClickListener mOnItemLongClickListener = null;
 
+    // define interface
+    public interface OnRecyclerViewItemClickListener {
+        void onItemClick(View view, ItemBean data);
+    }
+
+    // define interface
+    public interface OnRecyclerViewItemLongClickListener {
+        void onItemLongClick(View view, ItemBean data);
+    }
+
+    public void setOnItemClickListener(FragmentAdapter.OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+
+    public void setOnItemLongClickListener(FragmentAdapter.OnRecyclerViewItemLongClickListener listener) {
+        this.mOnItemLongClickListener = listener;
+    }
+
     @Override
     public FragmentAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.fg_item, parent, false);
@@ -52,7 +70,6 @@ public class FragmentAdapter
 
     @Override
     public void onBindViewHolder(FragmentAdapter.ItemViewHolder holder, int position) {
-//        // 使用Glide图片缓存框架加载图
 //        Glide.with(context)
 //                .load(mDatas.get(position).getItemDrawable())
 //                .error(R.drawable.bg)
@@ -88,24 +105,6 @@ public class FragmentAdapter
         }
 
         return false;
-    }
-
-    // define interface
-    public interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view, ItemBean data);
-    }
-
-    // define interface
-    public interface OnRecyclerViewItemLongClickListener {
-        void onItemLongClick(View view, ItemBean data);
-    }
-
-    public void setOnItemClickListener(FragmentAdapter.OnRecyclerViewItemClickListener listener) {
-        this.mOnItemClickListener = listener;
-    }
-
-    public void setOnItemLongClickListener(FragmentAdapter.OnRecyclerViewItemLongClickListener listener) {
-        this.mOnItemLongClickListener = listener;
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {

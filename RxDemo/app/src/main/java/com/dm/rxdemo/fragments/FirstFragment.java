@@ -4,17 +4,23 @@ import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
+import com.aspsine.swipetoloadlayout.OnRefreshListener;
+import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.dm.rxdemo.R;
 import com.dm.rxdemo.adapters.FragmentAdapter;
 import com.dm.rxdemo.beans.ItemBean;
 import com.github.lzyzsd.randomcolor.RandomColor;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
-import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +35,14 @@ import butterknife.ButterKnife;
  */
 public class FirstFragment extends Fragment
         implements FragmentAdapter.OnRecyclerViewItemClickListener,
-        FragmentAdapter.OnRecyclerViewItemLongClickListener {
+        FragmentAdapter.OnRecyclerViewItemLongClickListener,
+        OnRefreshListener, OnLoadMoreListener {
 
-    @BindView(R.id.fg_rcv)
-    PullLoadMoreRecyclerView mRecyclerView;
+    @BindView(R.id.fg_swipeToLoadLayout)
+    SwipeToLoadLayout mSwipeToLoadLayout;
+
+    @BindView(R.id.swipe_target)
+    RecyclerView mRecyclerView;
 
     @BindDrawable(R.drawable.bg)
     Drawable mDrawable;
@@ -46,10 +56,30 @@ public class FirstFragment extends Fragment
         View view = inflater.inflate(R.layout.fg_bind, container, false);
         ButterKnife.bind(this, view);
 
-        mDatas = getDatas();
         initView();
 
+        // 自动加载
+        autoRefresh();
+
         return view;
+    }
+
+    private void initView() {
+        mDatas = getDatas();
+
+        mFragmentAdapter = new FragmentAdapter(getActivity(), mDatas);
+
+        mRecyclerView.setAdapter(mFragmentAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setHasFixedSize(true);
+
+        mFragmentAdapter.setOnItemClickListener(this);
+        mFragmentAdapter.setOnItemLongClickListener(this);
+
+        mSwipeToLoadLayout.setOnRefreshListener(this);
+        mSwipeToLoadLayout.setOnLoadMoreListener(this);
     }
 
     private List<ItemBean> getDatas() {
@@ -91,30 +121,23 @@ public class FirstFragment extends Fragment
         itemBeanList.add(new ItemBean(getRandomIcon(), "Hehe18", "22:36"));
         itemBeanList.add(new ItemBean(getRandomIcon(), "Hehe18", "22:36"));
 
-
         return itemBeanList;
-    }
-
-    private void initView() {
-        mFragmentAdapter = new FragmentAdapter(getActivity(), mDatas);
-        mRecyclerView.setLinearLayout();
-        mRecyclerView.setAdapter(mFragmentAdapter);
-        mRecyclerView.setColorSchemeResources(android.R.color.holo_red_dark,android.R.color.holo_blue_dark);
-        mRecyclerView.setFooterViewText("loading");
-
-        mFragmentAdapter.setOnItemClickListener(this);
-        mFragmentAdapter.setOnItemLongClickListener(this);
     }
 
 
     @Override
     public void onItemClick(View view, ItemBean data) {
+        Toast.makeText(getActivity(),
+                data.getItemTitle(),
+                Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onItemLongClick(View view, ItemBean data) {
-
+        Toast.makeText(getActivity(),
+                data.getItemTime(),
+                Toast.LENGTH_SHORT).show();
     }
 
     private Drawable getRandomIcon() {
@@ -125,5 +148,39 @@ public class FirstFragment extends Fragment
                 .icon(FontAwesome.Icon.faw_caret_square_o_up)
                 .color(color)
                 .sizeDp(48);
+    }
+
+    @Override
+    public void onLoadMore() {
+        mSwipeToLoadLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeToLoadLayout.setLoadingMore(false);
+                mDatas.add(new ItemBean(getRandomIcon(), "onLoadMore!", "14:00"));
+                mFragmentAdapter.notifyDataSetChanged();
+            }
+        }, 1000);
+    }
+
+    @Override
+    public void onRefresh() {
+        mSwipeToLoadLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeToLoadLayout.setRefreshing(false);
+                mDatas.add(new ItemBean(getRandomIcon(), "onRefresh!", "14:00"));
+                mFragmentAdapter.notifyDataSetChanged();
+            }
+        }, 1000);
+
+    }
+
+    private void autoRefresh() {
+        mSwipeToLoadLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeToLoadLayout.setRefreshing(true);
+            }
+        });
     }
 }
