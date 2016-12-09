@@ -61,7 +61,29 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_1)
     public void btn_1_click() {
-        showSnackBar(getWindow().getDecorView(), "btn_1");
+        new MaterialDialog.Builder(this)
+                .title("Retrofit")
+                .items(R.array.retrofit_items)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog,
+                                            View view,
+                                            int which,
+                                            CharSequence text) {
+                        switch (which) {
+                            case 0:
+                                startActivity(new Intent(MainActivity.this, BasicGetAty.class));
+                                break;
+                            case 1:
+                                startActivity(new Intent(MainActivity.this, JsonGetAty.class));
+                                break;
+                            case 2:
+                                startActivity(new Intent(MainActivity.this, GetWithParamAty.class));
+                                break;
+                        }
+                    }
+                })
+                .show();
     }
 
     @OnClick(R.id.btn_2)

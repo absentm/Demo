@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -130,14 +131,34 @@ public class FirstFragment extends Fragment
         Toast.makeText(getActivity(),
                 data.getItemTitle(),
                 Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
     public void onItemLongClick(View view, ItemBean data) {
-        Toast.makeText(getActivity(),
-                data.getItemTime(),
-                Toast.LENGTH_SHORT).show();
+        new MaterialDialog.Builder(getActivity())
+                .title(data.getItemTitle())
+                .items(R.array.items_choice)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog,
+                                            View itemView,
+                                            int position,
+                                            CharSequence text) {
+                        switch (position) {
+                            case 0:
+                                Toast.makeText(getActivity(),
+                                        "收藏",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                            case 1:
+                                Toast.makeText(getActivity(),
+                                        "分享",
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+
+                    }
+                }).show();
     }
 
     private Drawable getRandomIcon() {

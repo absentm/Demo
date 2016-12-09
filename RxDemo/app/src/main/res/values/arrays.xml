@@ -5,4 +5,15 @@
         <item>Fragment and ViewHolder</item>
         <item>List</item>
     </string-array>
+
+    <string-array name="items_choice">
+        <item>收藏</item>
+        <item>分享</item>
+    </string-array>
+
+    <string-array name="retrofit_items">
+        <item>BASIC_GET</item>
+        <item>JSON_GET</item>
+        <item>GET_WITH_PARAM</item>
+    </string-array>
 </resources>

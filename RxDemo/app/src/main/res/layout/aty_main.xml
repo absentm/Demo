@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="8dp"
-            android:text="@string/retrefit_btn"
+            android:text="@string/retrofit_btn"
             android:textColor="@android:color/white"
             app:buttonColor="@color/colorAccent"
             app:rippleColor="@android:color/darker_gray"
