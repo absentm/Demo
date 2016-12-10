@@ -54,4 +54,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
     compile 'com.orhanobut:logger:1.15'
+
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
 }

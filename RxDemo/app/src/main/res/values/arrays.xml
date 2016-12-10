@@ -16,4 +16,9 @@
         <item>JSON_GET</item>
         <item>GET_WITH_PARAM</item>
     </string-array>
+    <string-array name="rxjava_items">
+        <item>BASIC</item>
+        <item>OP</item>
+        <item>GET_WITH_PARAM</item>
+    </string-array>
 </resources>

@@ -88,7 +88,29 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_2)
     public void btn_2_click() {
-        showSnackBar(getWindow().getDecorView(), "btn_2");
+        new MaterialDialog.Builder(this)
+                .title("RxJava")
+                .items(R.array.rxjava_items)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog,
+                                            View view,
+                                            int which,
+                                            CharSequence text) {
+                        switch (which) {
+                            case 0:
+                                startActivity(new Intent(MainActivity.this, RxJavaBaseAty.class));
+                                break;
+                            case 1:
+//                                startActivity(new Intent(MainActivity.this, JsonGetAty.class));
+                                break;
+                            case 2:
+//                                startActivity(new Intent(MainActivity.this, GetWithParamAty.class));
+                                break;
+                        }
+                    }
+                })
+                .show();
     }
 
     private void showSnackBar(View view, String msg) {
