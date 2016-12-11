@@ -16,12 +16,13 @@ import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class RxSchuderActivity extends AppCompatActivity implements View.OnClickListener{
+public class RxSchuderActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mText;
     private Button mBtn;
     private TextView mEdit;
     private LinearLayout mLinearlayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +31,10 @@ public class RxSchuderActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
-        mText= (TextView) findViewById(R.id.text1);
-        mEdit= (TextView) findViewById(R.id.edit1);
-        mBtn= (Button) findViewById(R.id.button);
-        mLinearlayout= (LinearLayout) findViewById(R.id.linearlayout);
+        mText = (TextView) findViewById(R.id.text1);
+        mEdit = (TextView) findViewById(R.id.edit1);
+        mBtn = (Button) findViewById(R.id.button);
+        mLinearlayout = (LinearLayout) findViewById(R.id.linearlayout);
         mBtn.setText("从资源文件中获取图片，然后展示出来");
         mBtn.setOnClickListener(this);
         mText.setOnClickListener(this);
@@ -43,52 +44,54 @@ public class RxSchuderActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.text1:
                 break;
             case R.id.edit1:
                 break;
             case R.id.button:
-                if(mText.getText().toString().length()>0){
+                if (mText.getText().toString().length() > 0) {
                     mText.setText("");
                 }
                 start();
                 break;
         }
     }
-static  StringBuffer sb=null;
+
+    static StringBuffer sb = null;
+
     private void start() {
-        sb=new StringBuffer();
-        Observable.create(new Observable.OnSubscribe<Drawable>(){
+        sb = new StringBuffer();
+        Observable.create(new Observable.OnSubscribe<Drawable>() {
 
             @Override
             public void call(Subscriber<? super Drawable> subscriber) {
-               sb.append(" Observable.create(): 线程: "+Thread.currentThread().getName()+"\n\n");
-                Drawable dd=getResources().getDrawable(R.mipmap.gril);
+                sb.append(" Observable.create(): 线程: " + Thread.currentThread().getName() + "\n\n");
+                Drawable dd = getResources().getDrawable(R.mipmap.gril);
                 subscriber.onNext(dd);
                 subscriber.onCompleted();
             }
         }).subscribeOn(Schedulers.io())
-          .observeOn(Schedulers.newThread())
-          .map(new Func1<Drawable, ImageView>() {
-              @Override
-              public ImageView call(Drawable drawable) {
-                  sb.append("map():  drawable -->imageview 的线程: "+Thread.currentThread().getName()+"\n\n");
-                  ImageView img=new ImageView(RxSchuderActivity.this);
-                  LinearLayout.LayoutParams params= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                  img.setLayoutParams(params);
-                  img.setImageDrawable(drawable);
-                  return img;
-              }
-          }).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Action1<ImageView>() {
-                @Override
-                public void call(ImageView imageView) {
-                    sb.append("call(): 线程: "+Thread.currentThread().getName()+"\n");
-                    mText.setText(sb);
-                    mLinearlayout.addView(imageView);
+                .observeOn(Schedulers.newThread())
+                .map(new Func1<Drawable, ImageView>() {
+                    @Override
+                    public ImageView call(Drawable drawable) {
+                        sb.append("map():  drawable -->imageview 的线程: " + Thread.currentThread().getName() + "\n\n");
+                        ImageView img = new ImageView(RxSchuderActivity.this);
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        img.setLayoutParams(params);
+                        img.setImageDrawable(drawable);
+                        return img;
+                    }
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ImageView>() {
+                    @Override
+                    public void call(ImageView imageView) {
+                        sb.append("call(): 线程: " + Thread.currentThread().getName() + "\n");
+                        mText.setText(sb);
+                        mLinearlayout.addView(imageView);
 
-                }
-            });
+                    }
+                });
     }
 }

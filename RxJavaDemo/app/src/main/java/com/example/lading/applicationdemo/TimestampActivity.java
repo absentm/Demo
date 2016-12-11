@@ -8,23 +8,21 @@ import android.widget.TextView;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import rx.Observable;
 import rx.Subscription;
 import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 import rx.schedulers.Timestamped;
 
-public class TimestampActivity extends AppCompatActivity implements View.OnClickListener{
+public class TimestampActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mText;
     private Button mBtn;
     private Button mBtnCancal;
     private TextView mEdit;
-    private Subscription mSubscription=null;
-    private Integer [] words={1,3,5,2,34,7,5,86,23,43};
+    private Subscription mSubscription = null;
+    private Integer[] words = {1, 3, 5, 2, 34, 7, 5, 86, 23, 43};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +31,12 @@ public class TimestampActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
-        mText= (TextView) findViewById(R.id.text1);
-        mEdit= (TextView) findViewById(R.id.edit1);
-        mBtn= (Button) findViewById(R.id.button);
+        mText = (TextView) findViewById(R.id.text1);
+        mEdit = (TextView) findViewById(R.id.edit1);
+        mBtn = (Button) findViewById(R.id.button);
         mBtn.setText("开始");
 //        mBtnCancal= (Button) findViewById(R.id.button_cancal);
-        mEdit.setText("为给定数据列表：1,3,5,2,34,7,5,86,23,43中每一个数据加上一个时间戳   \n\ntimestamp() :为每个事件加上一个时间戳" );
+        mEdit.setText("为给定数据列表：1,3,5,2,34,7,5,86,23,43中每一个数据加上一个时间戳   \n\ntimestamp() :为每个事件加上一个时间戳");
         mBtn.setOnClickListener(this);
         mText.setOnClickListener(this);
         mEdit.setOnClickListener(this);
@@ -47,7 +45,7 @@ public class TimestampActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.text1:
                 break;
             case R.id.edit1:
@@ -83,9 +81,9 @@ public class TimestampActivity extends AppCompatActivity implements View.OnClick
                     @Override
                     public void call(Timestamped<Integer> integerTimestamped) {
 
-                        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
-                        mText.append("value: "+integerTimestamped.getValue()+"       time:   ");
-                        mText.append(sdf.format(new Date(integerTimestamped.getTimestampMillis()))+"\n");
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+                        mText.append("value: " + integerTimestamped.getValue() + "       time:   ");
+                        mText.append(sdf.format(new Date(integerTimestamped.getTimestampMillis())) + "\n");
 
                     }
                 });

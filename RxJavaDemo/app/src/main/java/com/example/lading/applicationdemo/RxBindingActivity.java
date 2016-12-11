@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.widget.RxTextView;
@@ -26,11 +25,12 @@ RxBinding这个库是基于RxJava的对于Android原生组件的绑定，是RxJa
 相当于代替了OnClick,Listener这些东西，
  */
 
-public class RxBindingActivity extends AppCompatActivity implements View.OnClickListener{
+public class RxBindingActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mText;
     private Button mBtn;
     private EditText mEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +39,9 @@ public class RxBindingActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
-        mText= (TextView) findViewById(R.id.text1);
-        mEdit= (EditText) findViewById(R.id.edit1);
-        mBtn= (Button) findViewById(R.id.button);
+        mText = (TextView) findViewById(R.id.text1);
+        mEdit = (EditText) findViewById(R.id.edit1);
+        mBtn = (Button) findViewById(R.id.button);
         mEdit.setHint("输入含有1的数字，下方才会出现提示");
         mText.setText("提示数据：\n");
 
@@ -51,18 +51,19 @@ public class RxBindingActivity extends AppCompatActivity implements View.OnClick
         //用来监听edittext输入，同时匹配输入数数据来提示
         RxTextView.textChanges(mEdit)
                 //在一次事件发生后的一段时间内没有新操作，则发出这次事件
-                .debounce(500,TimeUnit.MILLISECONDS)
+                .debounce(500, TimeUnit.MILLISECONDS)
                 //转换线程
                 .observeOn(Schedulers.newThread())
                 //通过输入的数据，来匹配"数据库"中的数据从而提示。。
                 .map(new Func1<CharSequence, List<String>>() {
-                    List<String> list=new ArrayList<String>();
+                    List<String> list = new ArrayList<String>();
+
                     @Override
                     public List<String> call(CharSequence charSequence) {
 
-                        if (charSequence.toString().contains("1")){
-                            for (int i=0;i<5;i++){
-                                list.add("11"+i);
+                        if (charSequence.toString().contains("1")) {
+                            for (int i = 0; i < 5; i++) {
+                                list.add("11" + i);
                             }
                         }
                         return list;
@@ -95,7 +96,7 @@ public class RxBindingActivity extends AppCompatActivity implements View.OnClick
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        Log.w("DDDDDDDD",throwable.getMessage().toString());
+                        Log.w("DDDDDDDD", throwable.getMessage().toString());
                     }
                 });
         mBtn.setText("连续点击防误触");
@@ -106,7 +107,7 @@ public class RxBindingActivity extends AppCompatActivity implements View.OnClick
                     //这就相当于OnClickListener中的OnClick方法回调
                     @Override
                     public void call(Void aVoid) {
-                       mText.append("\n 防误触 测试  \n");
+                        mText.append("\n 防误触 测试  \n");
                     }
                 });
 
@@ -114,7 +115,7 @@ public class RxBindingActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.text1:
                 break;
             case R.id.edit1:
