@@ -12,6 +12,7 @@ import rx.functions.Action1;
 
 /**
  * RxJavaBaseAty
+ * https://zhuanlan.zhihu.com/p/23584382
  * Created by dm on 16-12-10.
  */
 public class RxJavaBaseAty extends BaseBarWithBackActivity {
@@ -21,7 +22,7 @@ public class RxJavaBaseAty extends BaseBarWithBackActivity {
         setContentView(R.layout.aty_rxjava_base);
         setTitle("RX_BASE");
 
-        // 创建被观察者，正宗写法
+        // 创建被观察者，正宗写法，生产者生产事件，开关生产了 5 个事件
         Observable switcher = Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -33,14 +34,14 @@ public class RxJavaBaseAty extends BaseBarWithBackActivity {
             }
         });
 
-        // 创建被观察者，懒汉写法1
+        // 创建被观察者，懒汉写法 1
         Observable switcher1 = Observable.just("On", "Off", "On", "On");
 
-        // 创建被观察者，懒汉写法2
+        // 创建被观察者，懒汉写法 2
         String[] kk = {"On", "Off", "On", "On"};
         Observable switcher2 = Observable.from(kk);
 
-        // 创建观察者，正常写法
+        // 创建观察者，正常写法，消费者处理 5 个事件
         Subscriber light = new Subscriber<String>() {
             @Override
             public void onCompleted() {
