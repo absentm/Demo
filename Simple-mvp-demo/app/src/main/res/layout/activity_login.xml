@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    >
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/login_username_met"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="User Name"
+        app:met_baseColor="#0056d3"
+        app:met_floatingLabel="highlight"
+        />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/login_userpassword_met"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="User Password"
+        app:met_baseColor="#0056d3"
+        app:met_floatingLabel="highlight"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/login_register_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/shape_button_primary"
+            android:text="register"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            />
+
+        <Button
+            android:id="@+id/login_loginin_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/shape_button_teal"
+            android:text="loginin"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

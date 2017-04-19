@@ -22,4 +22,11 @@ public class UserBean {
         return userPassword;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
 }
