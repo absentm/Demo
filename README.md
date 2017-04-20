@@ -62,5 +62,7 @@ Google 官方提供的 UI Demo， 详情见如下表格内容， 相关 APK 下�
 | ScrollingDemo | 官方 CollapsingToolbarLayout 折叠效果样例 | - |
 | CoordinatorExamples | @Saul Molinero 总结的加强版折叠效果样例 | https://www.aswifter.com/2015/11/12/mastering-coordinator/ |
 | LoginDemo | 官方 Material Design 登录样例 | - |
+| Simple-mvp-demo | mvp 模式样例 | - |
+| Simple-dagger2-demo | dagger2 依赖注入框架样例 | - |
 
 --------------------
