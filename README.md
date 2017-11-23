@@ -75,3 +75,9 @@ MVP 架构、Dagger2 依赖注入框架、RxJava + Retrofit 使用和 View 注�
 | Simple-dagger2-demo | dagger2 依赖注入框架样例 | - |
 
 ---------------------
+
+## [ 4 ] AngularJS-demo
+
+这个文件夹是按照 《AngularJS》 权威教程学习的示例代码。
+
+---------------------
