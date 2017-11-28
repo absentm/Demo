@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="" ng-init="num = 2; price = 10;
+    firstName='jone'; lastName='Tom';
+    person={age:18, score:98.5};
+    arr=[0, 1, 2, 3, 4]">
+    <p>我的第一个表达式: {{ 5 + 5 }}</p>
+
+    <p>Coset: {{ num * price}}</p>
+    <p>Coset: <span ng-bind="num * price"></span></p>
+    <p>Name: {{firstName + " " + lastName}}</p>
+    <p>Info: {{person.age + ", " + person.score}}</p>
+    <p>Array: {{"arr[0] = " + arr[0] + ", arr[2] = " + arr[2]}}</p>
+
+    <!--Note: ng-init function's scope is only in one label, and only once-->
+
+</div>
+
+
+</body>
+</html>

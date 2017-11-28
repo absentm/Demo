@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <title>CH04-directive</title>
+</head>
+<body>
+<div ng-app=""
+     ng-init="inputValue='hello';
+            num=2; price=5;
+            arr=[12, 23, 34, 45, 56];
+            objArr=[{name:'zhangsan', age:18},{name:'lisi', age:25}]">
+
+    <div>
+        <p>Please input text in box:</p>
+        <p>Text: <input type="text" ng-model="inputValue"></p>
+        <p>The Input is {{ inputValue }}</p>
+    </div>
+
+    <div>
+        <p>Num:   <input type="number" ng-model="num"></p>
+        <p>Price: <input type="number" ng-model="price"></p>
+        <p>Cost:  {{ num * price }} </p>
+    </div>
+
+    <div>
+        <p>Array element foreach repeat: </p>
+        <ul>
+            <li ng-repeat="item in arr">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <p>Object Array foreach repeat: </p>
+        <ul>
+            <li ng-repeat="x in objArr">
+                {{ x.name + ": " + x.age}}
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>
