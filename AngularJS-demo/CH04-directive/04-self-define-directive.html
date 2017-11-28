@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <title>CH04-self-define-directive</title>
+</head>
+<body ng-app="MyApp">
+    <self-directive></self-directive>
+    <div self-directive></div>
+    <div class="self-directive"></div>
+
+
+    <p><strong>注意：</strong> 你必须设置 <b>restrict</b> 的值为 "C" 才能通过类名(class)来调用指令。</p>
+
+    <p><strong>注意：</strong> 我们需要在该实例添加 <strong>replace</strong> 属性， 否则评论是不可见的。</p>
+    <p><strong>注意：</strong> 你必须设置 <b>restrict</b> 的值为 "M" 才能通过注释来调用指令。</p>
+    <p>
+        <strong>
+            restrict 值可以是以下几种:
+
+            <li> E 作为元素名使用 </li>
+            <li> A 作为属性使用 </li>
+            <li> C 作为类名使用 </li>
+            <li> M 作为注释使用 </li>
+
+            restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。
+        </strong>
+    </p>
+
+    <script>
+        var app = angular.module("MyApp", []);
+        app.directive("selfDirective", function() {
+            return {
+                restrict : "M",
+//                restrict : "C",
+                template: "<p>Here Here !</p>"
+            };
+        });
+    </script>
+
+</body>
+</html>

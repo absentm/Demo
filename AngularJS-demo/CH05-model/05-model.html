@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <title>CH05-Model</title>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        Text: <input ng-model="name">
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function ($scope) {
+            $scope.name = "HHHHHHHH";
+        });
+    </script>
+</body>
+</html>
