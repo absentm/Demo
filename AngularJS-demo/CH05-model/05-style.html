@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <title>CH05-Filter</title>
+    <!-- 此处引入style.css样式文件-->
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div ng-controller="FirstCtrl">
+    <!-- 此处放置了ng-class，并设定了每个样式激活时的条件（对应下方3个复选框）-->
+    <p ng-class="{strike: deleted, bold: important, 'has-error': error}">示例文字</p>
+    <input type="checkbox" ng-model="deleted">
+    选中后上方文字将加上删除线（style中加上strike类） <br>
+    <input type="checkbox" ng-model="important">
+    选中后上方文字将变化为粗体（style中加上bold类） <br>
+    <input type="checkbox" ng-model="error">
+    选中后上方文字将变红，背景变黄（style中加上has-error类）
+
+    <br>
+    <input type="button" value="开始动画" ng-click="style='animate'">
+    <br>
+    <input type="button" value="恢复原始" ng-click="style=''">
+    <br>
+    <span class="base-class" ng-class="style">示例文本2</span>
+
+    <p>-------------------------------------------</p>
+    <br>
+    <label>选择一个颜色（无空选项）:
+        <select ng-model="colorChosen" ng-options="color.name for color in colors">
+
+        </select>
+    </label>
+    <br>
+
+    当前选中的颜色: {{ colorChosen.name }}
+    <p></p>
+    <div style="border:solid 1px black; height:20px"
+         ng-style="{'background-color':colorChosen.color}">
+    </div>
+
+</div>
+
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
