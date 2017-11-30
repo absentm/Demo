@@ -78,6 +78,6 @@ MVP 架构、Dagger2 依赖注入框架、RxJava + Retrofit 使用和 View 注�
 
 ## [ 5 ] AngularJS-demo
 
-这个文件夹是按照 《AngularJS 权威教程》 学习的示例代码。
+这个文件夹是参考 《AngularJS 权威教程》、[AngularJS 菜鸟教程](http://www.runoob.com/angularjs/angularjs-tutorial.html)以及[Git Book-学习AngularJS 1.x](https://www.gitbook.com/book/hairui219/learning_angular/details)学习的示例代码。
 
 ---------------------
