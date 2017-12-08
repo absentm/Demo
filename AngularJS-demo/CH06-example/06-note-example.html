@@ -1,0 +1,33 @@
+<html ng-app="myNoteApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Note-Example</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container" ng-controller="myNoteCtrl">
+
+    <h2>My Note</h2>
+
+    <p><textarea class="form-control" ng-model="message" cols="40" rows="10"></textarea></p>
+
+    <p>
+        <button class="btn btn-primary btn-lg" ng-click="save()">Save</button>
+        <button class="btn btn-success btn-lg" ng-click="clear()">Clear</button>
+    </p>
+
+    <p class="help-block">
+        Number of characters left: <span ng-bind="left()"></span>
+    </p>
+
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+</div>
+
+<script src="js/myNoteApp.js"></script>
+<script src="js/myNoteCtrl.js"></script>
+
+</body>
+</html>
