@@ -9,6 +9,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.absentm.demo.beans.Student;
 
+/**
+ * StudentController
+ * 
+ * @author AbsentM
+ *
+ */
 @Controller
 public class StudentController {
 

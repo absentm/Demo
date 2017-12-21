@@ -14,7 +14,38 @@
 	    <welcome-file>default.html</welcome-file>  
 	    <welcome-file>default.htm</welcome-file>  
 	    <welcome-file>default.jsp</welcome-file>  
-  	</welcome-file-list>  
+  	</welcome-file-list> 
+  	
+  	<context-param>  
+        <param-name>webAppRootKey</param-name>  
+        <param-value>demo.root</param-value>  
+    </context-param>  
+  
+    <context-param>  
+        <param-name>log4jConfigLocation</param-name>  
+        <param-value>/WEB-INF/log4j.properties</param-value>  
+    </context-param>  
+      
+    <context-param>  
+        <param-name>log4jRefreshInterval</param-name>
+        <!-- 6秒 -->  
+        <param-value>6000</param-value>  
+    </context-param>  
+  
+    <listener>  
+        <listener-class>  
+            org.springframework.web.util.Log4jConfigListener  
+        </listener-class>  
+    </listener>
+
+  <!--这里配置了一个listener，也可以配置servlet:-->  
+  <!--   
+      <servlet>  
+         <servlet-name>log4j</servlet-name>  
+         <servlet-class>org.springframework.web.util.Log4jConfigServlet</servlet-class>  
+         <load-on-startup>2</load-on-startup>  
+     </servlet>  
+  -->
 	
 	<servlet>
       <servlet-name>demo</servlet-name>
