@@ -34,9 +34,8 @@ public interface BookService {
 	 */
 	List<Book> getSomeList(String name);
 
-	/*
+	/**
 	 * 查看某学生预约的所有图书
-	 * 
 	 */
 	List<Appointment> getAppointByStu(long studentId);
 

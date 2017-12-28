@@ -36,6 +36,7 @@ import com.absentm.demo.exception.NoNumberException;
 @RequestMapping("/books")
 public class BookController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private BookService bookService;
 
