@@ -9,9 +9,11 @@
 		VALUES (#{bookId},
 		#{studentId})
 	</insert>
+
 	<!-- <delete id="deleteOne" > DELETE FROM appointment WHERE book_id=#{bookId} 
 		AND student_id=#{studentId} </delete> 用不到这个功能 -->
 	<!-- //查询某个学生的所有预约记录 -->
+
 	<select id="quaryAndReturn" resultType="com.absentm.demo.beans.Appointment">
 		<!-- 如何告诉MyBatis把结果映射到Appointment同时映射book属性 -->
 		<!-- 可以自由控制SQL -->
@@ -30,6 +32,7 @@
 		WHERE
 		a.student_id = #{studentId}
 	</select>
+
 	<!-- //查询所有被预约了的书 <select id="queryAll" > SELECT a.book_id, a.student_id, 
 		a.appoint_time, b.book_id "book.book_id", b.`name` "book.name", b.introd 
 		"book.introd" b.number "book.number" FROM appointment a INNER JOIN book b 

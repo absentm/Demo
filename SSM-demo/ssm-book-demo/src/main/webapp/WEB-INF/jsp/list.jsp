@@ -30,7 +30,6 @@
          	</div>
         </form>
        
-        
         <div class="panel-body">
             <table class="table table-hover">
                 <thead>
@@ -57,8 +56,6 @@
         
     </div>
 </div>
-
-
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
