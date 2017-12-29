@@ -2,7 +2,7 @@
 
 本项目是一个 Demo 集合, 存放日常写的一些 Demo 代码。
 
-## [ 1 ] RecyclerViewDemo
+## [1] RecyclerViewDemo
 
 Android RecyclerView 使用 Demo, 包涵了如下功能：</br>
 1. RecyclerView 控件的基本用法 ;</br>
@@ -32,7 +32,7 @@ Apk 下载地址: https://github.com/absentm/Demo/blob/master/apk/RecyclerViewDe
 
 --------------------
 
-## [ 2 ] MaterailDrawerDemo
+## [2] MaterailDrawerDemo
 
 一个UI Demo, 实现了如下UI特性:</br>
 1. 一个好用的侧滑控件materialdrawer的集成与使用</br>
@@ -52,7 +52,7 @@ Apk 下载地址: https://github.com/absentm/Demo/blob/master/apk/MaterialDrawer
 
 --------------------
 
-## [ 3 ] OfficailDemo
+## [3] OfficailDemo
 
 Google 官方提供的 UI Demo， 详情见如下表格内容， 相关 APK 下载地址请见项目 apk 文件夹下：
 
@@ -64,7 +64,7 @@ Google 官方提供的 UI Demo， 详情见如下表格内容， 相关 APK 下�
 | LoginDemo | 官方 Material Design 登录样例 | - |
 
 ---------------------
-## [ 4 ] MVP-Dagger2-RxJava-Retrofit-ButterKnife Demo
+## [4] MVP-Dagger2-RxJava-Retrofit-ButterKnife Demo
 
 MVP 架构、Dagger2 依赖注入框架、RxJava + Retrofit 使用和 View 注入框架 Buttreknife demo:
 
@@ -76,27 +76,36 @@ MVP 架构、Dagger2 依赖注入框架、RxJava + Retrofit 使用和 View 注�
 
 ---------------------
 
-## [ 5 ] AngularJS-demo
+## [5] AngularJS-demo
 
 这个文件夹是参考 《AngularJS 权威教程》、[AngularJS 菜鸟教程](http://www.runoob.com/angularjs/angularjs-tutorial.html)以及[Git Book-学习AngularJS 1.x](https://www.gitbook.com/book/hairui219/learning_angular/details)学习的示例代码。
 
 ---------------------
 
-## [ 6 ] Mybatis-demo
+## [6] Mybatis-demo
 
 这个文件夹是参考 Mybatis 官网教程、易百教程学习的示例代码。
 
 ---------------------
 
-## [ 7 ] SpringMVC-demo
+## [7] SpringMVC-demo
 
 这个文件夹是参考易百教程学习的 SpringMVC 示例代码。
 
 ---------------------
 
 
-## [ 8 ] SSM-demo
+## [8] SSM-demo
 
 这个文件夹使用 Spring + SpringMVC + Mybatis + Mysql + Tomcat + Bootstrap 整合的一个 "增删改查" demo .
+
+---------------------
+
+## [9] SpringBoot-demo
+
+这个文件夹是学习 SpringBoot 技术相关的学习 demo. 主要参考博客和 github 代码如下：
+
+1. 参考博客地址：http://www.ityouknow.com/spring-boot.html
+2. 参考代码地址：https://github.com/ityouknow/spring-boot-examples
 
 ---------------------
