@@ -31,14 +31,13 @@ public class UserMapperTest {
 	@Test
 	public void testQuery() throws Exception {
 		List<UserEntity> users = UserMapper.getAll();
-		if(users==null || users.size()==0){
+		if (users == null || users.size() == 0) {
 			System.out.println("is null");
-		}else{
+		} else {
 			System.out.println(users.toString());
 		}
 	}
-	
-	
+
 	@Test
 	public void testUpdate() throws Exception {
 		UserEntity user = UserMapper.getOne(6l);
