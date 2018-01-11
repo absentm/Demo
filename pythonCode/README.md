@@ -21,7 +21,8 @@ Python 语法学习的测试代码
 
 # 参考资料
 
-[1]. http://www.runoob.com/python/python-tutorial.html
+[1]. http://www.runoob.com/python/python-tutorial.html 
+</br>
 [2]. https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
 
 # END
