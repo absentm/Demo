@@ -109,3 +109,27 @@ MVP 架构、Dagger2 依赖注入框架、RxJava + Retrofit 使用和 View 注�
 2. 参考代码地址：https://github.com/ityouknow/spring-boot-examples
 
 ---------------------
+
+## [10] Python-demo
+
+本项目主要是 Python 学习笔记；
+
+**目录说明:**
+
+**1/** test/ 目录
+
+Python 语法学习的测试代码。
+
+**2/** utils/ 目录
+
+常用的工具代码。
+
+**3/** spider/ 目录
+
+写的一些爬虫项目代码。
+
+**4/** python-sqlite-demo/ 目录
+
+将 sqlite 数据库操作数据的 『 增删改查 』 方法封装，做了一些测试。
+
+---------------------
