@@ -53,7 +53,7 @@ def fetch_one_test(test_db):
     fetchone_sql = 'SELECT * FROM test_table WHERE id = ? '
     data = 1
     # fetchone_sql = 'SELECT * FROM test_table WHERE address = ? '
-    # data = '美国'
+    # data = 'ShenZhen'
     test_db.fetch_one(fetchone_sql, data)
 
 
