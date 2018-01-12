@@ -17,18 +17,9 @@ Apk 下载地址: https://github.com/absentm/Demo/blob/master/apk/RecyclerViewDe
 
 展示:
 
-<figure class="third">
-    <img src="https://o8zyn0sct.qnssl.com/RecyclerView-Demo-1.jpg" height="400" width="240">
-    <img src="https://o8zyn0sct.qnssl.com/RecyclerView-Demo-2.png" height="400" width="240">
-    <img src="https://o8zyn0sct.qnssl.com/RecyclerView-Demo-3-new.png" height="400" width="240">
-</figure>
+![list-1](https://o8zyn0sct.qnssl.com/RecyclerView-Demo-01.png)
 
-<figure class="third">
-    <img src="https://o8zyn0sct.qnssl.com/RecyclerView-Demo-4.png" height="400" width="240">
-    <img src="https://o8zyn0sct.qnssl.com/RecyclerView-Demo-5.png" height="400" width="240">
-    <img src="https://o8zyn0sct.qnssl.com/RecyclerView-Demo-6.png" height="400" width="240">
-</figure>
-
+![list-2](https://o8zyn0sct.qnssl.com/RecyclerView-Demo-02.png)
 
 --------------------
 
