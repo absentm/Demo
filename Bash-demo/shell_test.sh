@@ -154,7 +154,6 @@ for loop in 1 2 3 4 5 6; do
 done
 
 # test case
-
 echo "Please input a number(1 - 3): "
 read input_number
 case ${input_number} in
@@ -177,3 +176,30 @@ for item in ${arr[@]}; do
     echo ${item}
 done
 
+# simple process bar
+process_bar=""
+process_counter=0
+process_total=20
+process_array=(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
+
+for loop in ${process_array[@]}; do
+	process_bar+="#"
+	process_counter=$((${process_counter}+1))
+	process_percent=""
+	process_percent=`echo "scale=2; ${process_counter} / ${process_total} * 100" | bc`
+	printf "[%-20s] %s%%" ${process_bar} ${process_percent}
+	printf "\n"
+done
+
+index=0
+bar=""
+array=("-" "\\" "|" "/")
+
+while [ $index -le 100 ]; do
+	let item=i%4
+	printf "\e[31m\033[40m[%-100s]\e[32m\033[47m [%d%%] \e[30m \033[47m [%c] \e[0m\r" "${bar}" "${index}" "${array[${item}]}"
+	bar+="#"
+	usleep 50000
+	let index++
+done
+printf "\n"
