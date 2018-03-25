@@ -103,7 +103,7 @@ MVP 架构、Dagger2 依赖注入框架、RxJava + Retrofit 使用和 View 注�
 
 ## [10] Python-demo
 
-本项目主要是 Python 学习笔记；
+这个文件夹主要是 Python 学习笔记；
 
 **目录说明:**
 
@@ -122,5 +122,23 @@ Python 语法学习的测试代码。
 **4/** python-sqlite-demo/ 目录
 
 将 sqlite 数据库操作数据的 『 增删改查 』 方法封装，做了一些测试。
+
+---------------------
+
+## [11] Bash-demo
+
+这个文件夹主要是 Linux Bash 学习笔记，完成的一些示例代码和 demo 。
+
+---------------------
+
+## [12] Xshell-color
+
+这个文件夹是 Xshell 客户端，自定义配色方案的收集和修改内容：
+
+* Monokai 主题
+* Solarized Dark 主题
+* Ubuntu 主题
+
+## END
 
 ---------------------
