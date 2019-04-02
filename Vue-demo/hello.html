@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello vue</title>
+</head>
+<body>
+<div id="app">
+    {{ number / 100}}
+    {{isOk ? 'yes' : 'no'}}
+    {{text.split(',').join(',')}}
+    <button v-if="showBtn" v-on:click="btnClick">Click</button>
+</div>
+</body>
+<div id="books">
+    <ul>
+        <li v-for="book in books">
+            {{book.name}}
+        </li>
+    </ul>
+    Your full name: {{fullName}}
+</div>
+<div id="input_tx">
+    <input type="text" v-model="name" placeholder="Your name">
+    <h2>Hell, {{name}}</h2>
+</div>
+<script src="./vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            number: 120,
+            isOk: false,
+            text: '123,345',
+            showBtn: true
+        },
+        created: function () {
+            console.log("in created")
+        },
+        mounted: function () {
+            console.log("in mounted")
+        },
+        methods: {
+            btnClick: function () {
+                console.log('clicked!');
+                alert('clicked!')
+            }
+        }
+    });
+
+    new Vue({
+        el: '#books',
+        data: {
+            books: [
+                {name: 'Hello1'},
+                {name: 'Hello2'},
+                {name: 'Hello3'}
+            ]
+        }
+    });
+
+    new Vue({
+        el:'#input_tx',
+        data: {
+            name: ''
+        }
+    })
+
+</script>
+</html>

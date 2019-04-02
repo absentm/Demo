@@ -1,0 +1,28 @@
+[v-cloak] {
+    display: none;
+}
+table {
+    border: 1px solid silver;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+}
+th, td{
+    padding: 8px 16px;
+    border: 1px solid silver;
+    text-align: left;
+}
+th {
+    background: aliceblue;
+    color: cadetblue;
+    font-weight: 600;
+    white-space: nowrap;
+}
+button {
+    margin: 1px;
+    border: blueviolet;
+}
+div {
+    margin: 1px;
+    border: azure;
+}

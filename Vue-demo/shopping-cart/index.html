@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping cart</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+<div id="app" v-cloak>
+    <template v-if="list.length">
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Count</th>
+                <th>OP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item, index) in list">
+                <td>{{ index + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>
+                    <button @click="btnClickReduce(index)" :disabled="item.count === 1">
+                        -
+                    </button>
+                    {{ item.count }}
+                    <button @click="btnClickAdd(index)">
+                        +
+                    </button>
+                </td>
+                <td>
+                    <button @click="btnClickRemove(index)">Remove</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div align="left">
+            Total: ¥{{totalPrice}}
+        </div>
+    </template>
+    <div v-else>Empty!</div>
+</div>
+<script src="../vue.min.js"></script>
+<script src="./index.js"></script>
+</body>
+</html>
