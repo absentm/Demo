@@ -139,6 +139,10 @@ Python 语法学习的测试代码。
 * Solarized Dark 主题
 * Ubuntu 主题
 
+## [13] Vue-demo
+
+这个文件夹是前端 VUE 学习的一些小 demo
+
 ## END
 
 ---------------------
