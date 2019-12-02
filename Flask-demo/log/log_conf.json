@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "simple": {
+      "format": "[%(asctime)s]-[%(name)s]-[%(levelname)s]-[line(%(lineno)d)]-[%(filename)s]: [%(message)s]",
+      "datefmt": "%Y-%m-%d %H:%M:%S"
+    }
+  },
+  "handlers": {
+    "console": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "simple",
+      "stream": "ext://sys.stdout"
+    },
+    "info_file_handler": {
+      "class": "logging.handlers.TimedRotatingFileHandler",
+      "level": "DEBUG",
+      "formatter": "simple",
+      "filename": "D:\\Devs\\Demo\\Flask-demo\\log\\logs_dir\\info.log",
+      "when": "H",
+      "interval": 1,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "error_file_handler": {
+      "class": "logging.handlers.TimedRotatingFileHandler",
+      "level": "DEBUG",
+      "formatter": "simple",
+      "filename": "D:\\Devs\\Demo\\Flask-demo\\log\\logs_dir\\errors.log",
+      "when": "D",
+      "interval": 1,
+      "backupCount": 50,
+      "encoding": "utf8"
+    }
+  },
+  "loggers": {
+    "demo": {
+      "level": "DEBUG",
+      "handlers": [
+        "error_file_handler"
+      ],
+      "propagate": "no"
+    }
+  }
+}
