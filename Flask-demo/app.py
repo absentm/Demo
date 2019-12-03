@@ -1,23 +1,15 @@
 # coding=utf-8
 
 from flask import Flask, jsonify
-from db.sql_utils import select_all
-from log.log_util import register_logger
+
 from common.data_util import get_current_utc_time
 from db.sql_utils import persist_data
+from db.sql_utils import select_all
+from log.log_util import register_logger
 
 app = Flask(__name__)
 
 log = register_logger("demo")
-
-
-def get_all_notes():
-    """
-    Get all notes from db
-    :return:
-    """
-
-    return None
 
 
 @app.route('/notes/api/v1.0/list')
