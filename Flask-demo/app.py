@@ -1,7 +1,12 @@
 # coding=utf-8
 
+import datetime
+
+from apscheduler.executors.pool import ThreadPoolExecutor
+from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, jsonify
 
+from common import global_variable
 from common.data_util import get_current_utc_time
 from db.sql_utils import persist_data
 from db.sql_utils import select_all
@@ -57,10 +62,59 @@ def delete_one_notes():
     return "Success!"
 
 
+@app.route('/notes/api/v1.0/timed')
+def auto_report_log_msg():
+    log.debug("Start timed msg...")
+    executors = {
+        "default": ThreadPoolExecutor(10)
+    }
+    app_scheduler = BackgroundScheduler(executors)
+    app_scheduler.start()
+
+    global_variable.set_global_variable("app_scheduler", app_scheduler)
+    app_job_id = "note_auto_record"
+    app_scheduler.add_job(
+        report_app_note_msg,
+        'interval',
+        minutes=1,
+        id=app_job_id,
+        args=["Say hello am here!"],
+        name=app_job_id,
+        next_run_time=datetime.datetime.now()
+    )
+
+    return "Success!"
+
+
+@app.route('/notes/api/v1.0/stoptimed')
+def stop_auto_report_log_msg():
+    log.debug("Stop timed msg...")
+
+    app_scheduler = global_variable.get_global_variable("app_scheduler")
+    app_job_id = "note_auto_record"
+
+    if app_scheduler and app_scheduler.get_job(app_job_id):
+        log.debug("Get app job id: " + str(app_scheduler.get_job(app_job_id)))
+        app_scheduler.remove_job(app_job_id)
+
+    log.debug("Remove job end!")
+    return "Success!"
+
+
 @app.route('/')
 def index():
     log.debug("Query home index...")
     return "Hello, welcome!"
+
+
+def report_app_note_msg(msg):
+    """
+    Auto report msg
+    :param msg:
+    :return:
+    """
+    print msg
+    log.debug(msg)
 
 
 if __name__ == '__main__':
