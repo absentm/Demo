@@ -1,40 +1,24 @@
 <template>
-  <el-menu
-    :default-active="activeIndex2"
-    class="el-menu-demo"
-    mode="horizontal"
-    @select="handleSelect"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b">
-    <el-menu-item index="1">AbsentM's Notes</el-menu-item>
-    <el-submenu index="2">
-      <template slot="title"><i class="el-icon-s-home"></i>Home</template>
-      <el-menu-item index="2-1">Index1</el-menu-item>
-      <el-menu-item index="2-2">Index2</el-menu-item>
-      <el-menu-item index="2-3">Index3</el-menu-item>
-    </el-submenu>
-    <el-menu-item index="3"><i class="el-icon-s-grid"></i>Categories</el-menu-item>
-    <el-menu-item index="4"><i class="el-icon-s-cooperation"></i>Archives</el-menu-item>
-    <el-menu-item index="5"><i class="el-icon-s-flag"></i>Tags</el-menu-item>
-    <el-menu-item index="6"><i class="el-icon-search"></i>Search</el-menu-item>
-  </el-menu>
+  <div id="showHomeContent">
+    <IndexHeader></IndexHeader>
+    <el-card :body-style="{ padding: '0px' }">
+      <img style="align-right" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+      <div style="padding: 14px;">
+        <span>好吃的汉堡</span>
+        <div class="bottom clearfix">
+          <time class="time">{{ currentDate }}</time>
+          <el-button type="text" class="button">操作按钮</el-button>
+        </div>
+      </div>
+    </el-card>
+  </div>
 </template>
 
 <script>
+  import IndexHeader from './IndexHeader'
   export default {
     name: 'AppIndex',
-    data() {
-      return {
-        activeIndex: '1',
-        activeIndex2: '1'
-      };
-    },
-    methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      }
-    }
+    components: {IndexHeader}
   }
 </script>
 
