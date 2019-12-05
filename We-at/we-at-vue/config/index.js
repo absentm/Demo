@@ -12,10 +12,14 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8443',
+        target: 'http://gank.io/api',
+        "secure": false,  //false为http访问，true为https访问
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
+        },
+        "headers": {  //设置请求头伪装成手机端的访问
+          "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36"
         }
       }
     },
