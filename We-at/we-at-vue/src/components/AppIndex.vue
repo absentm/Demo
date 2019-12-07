@@ -28,6 +28,12 @@
         </div>
       </el-card>
     </div>
+    <el-pagination
+      @current-change="handleCurrentChange"
+      :page-size="10"
+      layout="prev, pager, next, jumper"
+      :total="9500">
+    </el-pagination>
   </div>
 </template>
 
@@ -45,19 +51,27 @@
       }
     },
     created () {
-      const loading = this.openLoading()
-      this.$axios.get('api/data/all/20/1')
-        .then(response => {
-          loading.close()
-          console.log(response.data)
-          this.contentList = response.data['results']
-        })
-        .catch(error => {
-          console.log(error)
-          loading.close()
-        })
+      this.getDataList(1)
     },
-    methods: {},
+    methods: {
+      getDataList: function (pageNum) {
+        const loading = this.openLoading()
+        this.$axios.get('api/data/all/10/' + pageNum.toString())
+          .then(response => {
+            loading.close()
+            console.log(response.data)
+            this.contentList = response.data['results']
+          })
+          .catch(error => {
+            console.log(error)
+            loading.close()
+          })
+      },
+      handleCurrentChange (val) {
+        console.log(`当前页: ${val}`)
+        this.getDataList(`${val}`)
+      }
+    },
     filters: {
       dateFrm: function (dateValue) {
         let localTime = moment.utc(dateValue).toDate()
@@ -85,6 +99,11 @@
 
   i {
     margin-right: 8px;
+  }
+
+  el-pagination {
+    margin-top: 32px;
+    margin-bottom: 32px;
   }
 
   #item_title {
