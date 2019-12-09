@@ -28,12 +28,14 @@
         </div>
       </el-card>
     </div>
+    <el-divider></el-divider>
     <el-pagination
       @current-change="handleCurrentChange"
       :page-size="10"
       layout="prev, pager, next, jumper"
       :total="9500">
     </el-pagination>
+    <el-divider></el-divider>
   </div>
 </template>
 
