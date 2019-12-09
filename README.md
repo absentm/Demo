@@ -146,6 +146,16 @@ Python logs 可配置 demo, 可自定义日志级别、日志位置、日志回�
 
 这个文件夹是前端 VUE 学习的一些小 demo
 
+## [14] Flask-demo
+
+这个文件夹是学习 python flask 的一些小 demo，主要用到的技术包括：
+
+* Blueprint 蓝图
+* log 日志框架写法
+* Apscheduler 定时框架写法
+* Sqlite3 数据库操作
+
+
 ## END
 
 ---------------------
