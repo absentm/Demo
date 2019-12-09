@@ -17,6 +17,7 @@ CREATE TABLE "note" (
 -- --------------------------------
 -- Table structure for user
 -- --------------------------------
+DROP TABLE IF EXISTS user;
 CREATE TABLE "user" (
   "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   "username" TEXT,
