@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Blueprint, jsonify
 
 from common import global_variable
-from common.data_util import get_current_utc_time
+from common.date_util import get_current_utc_time
 from db.sql_utils import persist_data
 from db.sql_utils import select_all
 from log.log_util import register_logger
