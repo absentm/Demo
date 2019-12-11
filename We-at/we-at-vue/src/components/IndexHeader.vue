@@ -1,18 +1,19 @@
 <template>
   <el-menu
-    :default-active="activeIndex2"
+    :default-active="$route.path"
+    router
     class="el-menu-demo"
     mode="horizontal"
     @select="handleSelect"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b">
-    <el-menu-item index="1">AbsentM's Notes</el-menu-item>
-    <el-menu-item index="2"><i class="el-icon-s-home"></i>Home</el-menu-item>
-    <el-menu-item index="3"><i class="el-icon-s-grid"></i>Categories</el-menu-item>
-    <el-menu-item index="4"><i class="el-icon-s-cooperation"></i>Archives</el-menu-item>
-    <el-menu-item index="5"><i class="el-icon-s-flag"></i>Tags</el-menu-item>
-    <el-menu-item index="6"><i class="el-icon-user-solid"></i>About</el-menu-item>
+    <el-menu-item index="/">AbsentM's Notes</el-menu-item>
+    <el-menu-item index="/home"><i class="el-icon-s-home"></i>Home</el-menu-item>
+    <el-menu-item index="/category"><i class="el-icon-s-grid"></i>Categories</el-menu-item>
+    <el-menu-item index="/archives"><i class="el-icon-s-cooperation"></i>Archives</el-menu-item>
+    <el-menu-item index="/tags"><i class="el-icon-s-flag"></i>Tags</el-menu-item>
+    <el-menu-item index="/about"><i class="el-icon-user-solid"></i>About</el-menu-item>
     <el-menu-item>
       <el-input placeholder="Please input your search content" v-model="search_input">
         <el-button slot="append" icon="el-icon-search"></el-button>
