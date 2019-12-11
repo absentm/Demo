@@ -1,17 +1,19 @@
----
+
 title: 关于
+</br>
 date: 2016-06-18 17:38:18
-tags:
-- Life
-categories:
-- Life
+</br>
+tags: Life
+</br>
+categories: Life
 ---
 
 
 <blockquote class="blockquote-center">
 <font size="4">写作对我而言是去掉累赘的字，直接传达意思。</font>
 </br>
-詹姆士‧麦克布莱德
+</br>
+by 詹姆士‧麦克布莱德
 </blockquote>
 
 
