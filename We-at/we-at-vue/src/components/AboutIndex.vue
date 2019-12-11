@@ -1,7 +1,10 @@
 <template>
   <div id="showHomeContent">
     <IndexHeader></IndexHeader>
-    <div v-html="aboutHtml"></div>
+    <el-card>
+      <div v-html="aboutHtml"></div>
+    </el-card>
+
   </div>
 </template>
 
