@@ -14,11 +14,11 @@
     <el-menu-item index="/archives"><i class="el-icon-s-cooperation"></i>Archives</el-menu-item>
     <el-menu-item index="/tags"><i class="el-icon-s-flag"></i>Tags</el-menu-item>
     <el-menu-item index="/about"><i class="el-icon-user-solid"></i>About</el-menu-item>
-    <el-menu-item>
-      <el-input placeholder="Please input your search content" v-model="search_input">
-        <el-button slot="append" icon="el-icon-search"></el-button>
-      </el-input>
-    </el-menu-item>
+    <!--    <el-menu-item>-->
+    <el-input id="headerInput" placeholder="Please input your search content" v-model="search_input">
+      <el-button slot="append" icon="el-icon-search"></el-button>
+    </el-input>
+    <!--    </el-menu-item>-->
   </el-menu>
 </template>
 
@@ -44,5 +44,9 @@
 <style sloped>
   .el-input {
     width: 400px;
+    align-content: center;
+    margin-left: 32px;
+    margin-top: 10px;
+    vertical-align: center;
   }
 </style>
