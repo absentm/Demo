@@ -19,7 +19,7 @@ public class JsonUserController {
         return new JsonResult<>(user);
     }
 
-    @RequestMapping("list")
+    @RequestMapping("/list")
     public JsonResult<List> getUserList() {
         ArrayList<User> userArrayList = new ArrayList<>();
         User user1 = new User(1, "Kitty", "12wse");
@@ -29,7 +29,7 @@ public class JsonUserController {
         return new JsonResult<>(userArrayList, "Get user list success.");
     }
 
-    @RequestMapping("detail")
+    @RequestMapping("/detail")
     public JsonResult<HashMap<String, Object>> getUserInfoDetail() {
         HashMap<String, Object> hashMap = new HashMap<>();
         User user0 = new User(0, "AbsentM", "passw0rd");

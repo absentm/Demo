@@ -1,8 +1,17 @@
-server:
-  port: 8081
+spring:
+  profiles:
+    active:
+      - dev
 
 logging:
   config: logback.xml
   level:
     com.absentm.spbt: trace
 
+tmpconfig:
+  config1: config1
+
+multconfig:
+  configA: configA
+  configB: configB
+  configC: configC
