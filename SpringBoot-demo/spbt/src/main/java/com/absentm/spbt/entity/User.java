@@ -1,8 +1,17 @@
 package com.absentm.spbt.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "用户实体类")
 public class User {
+    @ApiModelProperty(value = "用户唯一标识")
     private Integer userId;
+
+    @ApiModelProperty(value = "用户名")
     private String userName;
+
+    @ApiModelProperty(value = "用户密码")
     private String userPasswd;
 
     public User(Integer userId, String userName, String userPasswd) {
