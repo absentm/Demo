@@ -29,4 +29,19 @@ public class GlobalExceptionHandler {
         logger.error("Null Pointer Exception, {}", ex.getMessage());
         return new JsonResult("500", "Null Pointer Exception");
     }
+
+    @ExceptionHandler(SelfErrorException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public JsonResult handleBusinessError(SelfErrorException ex) {
+        String code = ex.getErrorCode();
+        String message = ex.getErrorMsg();
+        return new JsonResult(code, message);
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public JsonResult handleUnexpectedServer(Exception ex) {
+        logger.error("System exception：", ex);
+        return new JsonResult("500", "Occur system exception, please contact with administrator");
+    }
 }
