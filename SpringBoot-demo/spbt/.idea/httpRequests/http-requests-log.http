@@ -1,0 +1,62 @@
+POST http://127.0.0.1:8081/exception/lack
+Content-Type: application/x-www-form-urlencoded
+
+psswda=999
+
+<> 2020-05-17T114601.400.json
+
+###
+
+POST http://127.0.0.1:8081/exception/lack
+Content-Type: application/x-www-form-urlencoded
+
+name=999
+
+<> 2020-05-17T114541.400.json
+
+###
+
+POST http://127.0.0.1:8081/exception/lack
+Content-Type: application/x-www-form-urlencoded
+
+name=999&passwd=content
+
+<> 2020-05-17T114046.200.json
+
+###
+
+POST http://127.0.0.1:8081/exception/lack
+Content-Type: application/json
+
+{
+  "name": "zhangsan",
+  "passwd": "pssss123"
+}
+
+<> 2020-05-17T113116.400.json
+
+###
+
+POST http://127.0.0.1:8081/exception/lack
+Content-Type: application/json
+
+{
+  "name": "zhangsan",
+  "passwd": "pssss123"
+}
+
+<> 2020-05-17T112952.400.json
+
+###
+
+POST http://127.0.0.1:8081/exception/lack
+Content-Type: application/json
+
+{
+  "name": "zhangsan"
+}
+
+<> 2020-05-17T112928.400.json
+
+###
+
