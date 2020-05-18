@@ -1,3 +1,66 @@
+GET http://127.0.0.1:8081/aop/test/AOP
+Accept: application/json
+
+<> 2020-05-18T045248.200.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test/AOP
+Accept: application/json
+
+<> 2020-05-18T044704.200.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test/AOP
+Accept: application/json
+
+<> 2020-05-18T040304.200.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test?name=AOP
+Accept: application/json
+
+<> 2020-05-18T040245.404.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test?name="AOP"
+Accept: application/json
+
+<> 2020-05-18T040234.404.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test?name="AOP"
+Accept: application/json
+
+<> 2020-05-18T034037.404.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test?name="AOP"
+Accept: application/json
+
+<> 2020-05-18T033933.500.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test?name="AOP"
+Accept: application/json
+
+<> 2020-05-18T033631.500.json
+
+###
+
+GET http://127.0.0.1:8081/aop/test?name=AOP
+Accept: application/json
+
+<> 2020-05-18T033539.500.json
+
+###
+
 GET http://127.0.0.1:8081/exception/self
 Accept: application/json
 
@@ -71,6 +134,11 @@ Content-Type: application/json
 }
 
 <> 2020-05-17T112928.400.json
+
+###
+
+GET  http://127.0.0.1:8081/aop/test/AOP
+Accept: application/json
 
 ###
 
