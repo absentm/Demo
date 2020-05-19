@@ -14,6 +14,20 @@ public class User {
     @ApiModelProperty(value = "用户密码")
     private String userPasswd;
 
+    public User() {
+
+    }
+
+    public User(String userName, String userPasswd) {
+        this.userName = userName;
+        this.userPasswd = userPasswd;
+    }
+
+    public User(Integer userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
+    }
+
     public User(Integer userId, String userName, String userPasswd) {
         this.userId = userId;
         this.userName = userName;

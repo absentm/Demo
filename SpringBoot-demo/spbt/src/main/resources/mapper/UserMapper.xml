@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itcodai.course10.dao.UserMapper">
+<mapper namespace="com.absentm.spbt.dao.UserMapper">
     <resultMap id="BaseResultMap" type="com.absentm.spbt.entity.User">
-
-        <id column="id" jdbcType="BIGINT" property="id"/>
+        <id column="user_id" jdbcType="BIGINT" property="userId"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
-        <result column="password" jdbcType="VARCHAR" property="userPasswd"/>
+        <result column="user_passwd" jdbcType="VARCHAR" property="userPasswd"/>
     </resultMap>
 
     <select id="getUserByName" resultType="User" parameterType="String">
-       select * from user where user_name = #{userName}
-  </select>
+        select * from user where user_name = #{userName}
+    </select>
+
+    <insert id="addNewUser" parameterType="com.absentm.spbt.entity.User">
+        insert into user(user_name, user_passwd) values(#{userName}, #{userPasswd})
+    </insert>
+
+    <update id="updateUserById" parameterType="com.absentm.spbt.entity.User">
+        update user set user_name = #{userName} where user_id = #{userId}
+    </update>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where user_id = #{userId}
+    </delete>
 </mapper>
