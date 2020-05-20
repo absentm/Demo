@@ -2,7 +2,9 @@ package com.absentm.spbt.service.impl;
 
 import com.absentm.spbt.dao.UserMapper;
 import com.absentm.spbt.entity.User;
+import com.absentm.spbt.event.MyEvent;
 import com.absentm.spbt.service.UserService;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +13,9 @@ import java.util.ArrayList;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Resource
+    private ApplicationContext applicationContext;
+
     @Resource
     private UserMapper userMapper;
 
@@ -21,7 +26,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ArrayList<User> getAllUserList() {
-        return userMapper.getAllUserListDao();
+        ArrayList<User> userArrayList = userMapper.getAllUserListDao();
+        MyEvent myEvent = new MyEvent(this, userArrayList);
+        applicationContext.publishEvent(myEvent);
+
+        return userArrayList;
     }
 
     @Override

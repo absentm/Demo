@@ -1,3 +1,28 @@
+GET http://127.0.0.1:8081/listener/publish
+Accept: application/json
+
+###
+GET http://127.0.0.1:8081/listener/request/name
+Accept: application/json
+
+<> 2020-05-20T110150.200.json
+
+###
+
+GET http://127.0.0.1:8081/listener/user/online/total
+Accept: application/json
+
+<> 2020-05-20T104251.200.json
+
+###
+
+GET http://127.0.0.1:8081/listener/user/list
+Accept: application/json
+
+<> 2020-05-20T103135.200.json
+
+###
+
 PUT http://127.0.0.1:8081/mybits/user/edit/2/lisisi
 Content-Type: application/json
 
@@ -22,13 +47,6 @@ Content-Type: application/json
 PUT http://127.0.0.1:8081/mybits/user/edit/2/lisisi
 Content-Type: application/json
 
-<> 2020-05-19T043837.500.json
-
-###
-
-PUT http://127.0.0.1:8081/mybits/user/edit/2/lisisi
-Content-Type: application/json
-
 <> 2020-05-19T043452.500.json
 
 ###
@@ -37,13 +55,6 @@ GET http://127.0.0.1:8081/mybits/user/list
 Accept: application/json
 
 <> 2020-05-19T043145.200.json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-<> 2020-05-19T041644.200.json
 
 ###
 
@@ -61,38 +72,10 @@ Content-Type: application/json
 
 ###
 
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-<> 2020-05-19T041503.200.json
-
-###
-
 POST http://127.0.0.1:8081/mybits/user/new
 Content-Type: application/json
 
 <> 2020-05-19T041454.200.json
-
-###
-
-POST http://127.0.0.1:8081/mybits/user/new
-Content-Type: application/json
-
-<> 2020-05-19T041319.500.json
-
-###
-
-POST http://127.0.0.1:8081/mybits/user/new
-Content-Type: application/json
-
-<> 2020-05-19T041130.500.json
-
-###
-
-POST http://127.0.0.1:8081/mybits/user/new
-Content-Type: application/json
-
-<> 2020-05-19T041030.500.json
 
 ###
 
@@ -110,13 +93,6 @@ Accept: application/json
 
 ###
 
-GET http://127.0.0.1:8081/mybits/user/zhangsan1
-Accept: application/json
-
-<> 2020-05-19T034950.200.json
-
-###
-
 GET http://127.0.0.1:8081/mybits/user/zhangsan
 Accept: application/json
 
@@ -124,12 +100,6 @@ Accept: application/json
 
 ###
 
-GET http://127.0.0.1:8081/mybits/user/zhangsan
-Accept: application/json
-
-<> 2020-05-19T034332.500.json
-
-###
 
 GET http://127.0.0.1:8081/mybits/user/list
 Accept: application/json
@@ -138,89 +108,7 @@ Accept: application/json
 
 ###
 
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
 GET http://127.0.0.1:8081/aop/test/AOP
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test/AOP
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test/AOP
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test/AOP
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test?name=AOP
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test?name="AOP"
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test?name="AOP"
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test?name="AOP"
-Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/aop/test?name="AOP"
 Accept: application/json
 
 ###
@@ -232,108 +120,6 @@ Accept: application/json
 
 GET http://127.0.0.1:8081/exception/self
 Accept: application/json
-
-###
-
-GET http://127.0.0.1:8081/exception/nullpoint
-Accept: application/json
-
-###
-
-POST http://127.0.0.1:8081/exception/lack
-Content-Type: application/x-www-form-urlencoded
-
-psswda=999
-
-
-
-###
-
-POST http://127.0.0.1:8081/exception/lack
-Content-Type: application/x-www-form-urlencoded
-
-name=999
-
-
-
-###
-
-POST http://127.0.0.1:8081/exception/lack
-Content-Type: application/x-www-form-urlencoded
-
-name=999&passwd=content
-
-
-
-###
-
-POST http://127.0.0.1:8081/exception/lack
-Content-Type: application/json
-
-{
-  "name": "zhangsan",
-  "passwd": "pssss123"
-}
-
-
-
-###
-
-POST http://127.0.0.1:8081/exception/lack
-Content-Type: application/json
-
-{
-  "name": "zhangsan",
-  "passwd": "pssss123"
-}
-
-
-
-###
-
-POST http://127.0.0.1:8081/exception/lack
-Content-Type: application/json
-
-{
-  "name": "zhangsan"
-}
-
-
-
-###
-
-GET  http://127.0.0.1:8081/aop/test/AOP
-Accept: application/json
-
-###
-
-GET  http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
-
-GET  http://127.0.0.1:8081/mybits/user/zhangsan
-Accept: application/json
-
-###
-
-POST http://127.0.0.1:8081/mybits/user/new
-Content-Type: application/json
-
-###
-
-PUT http://127.0.0.1:8081/mybits/user/edit/2/lisisi
-Content-Type: application/json
-
-###
-
-PUT http://127.0.0.1:8081/mybits/user/edit/3/sillll
-Content-Type: application/json
-
-###
-
-DELETE http://127.0.0.1:8081/mybits/user/remove/4
-Content-Type: application/json
 
 ###
 
