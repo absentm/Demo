@@ -1,3 +1,9 @@
+
+GET http://127.0.0.1:8081/redis/test
+Accept: application/json
+
+###
+
 GET http://127.0.0.1:8081/interceptor/test
 Accept: application/json
 
@@ -7,109 +13,80 @@ GET http://127.0.0.1:8081/listener/publish
 Accept: application/json
 
 ###
+
 GET http://127.0.0.1:8081/listener/request/name
 Accept: application/json
-
-<> 2020-05-20T110150.200.json
 
 ###
 
 GET http://127.0.0.1:8081/listener/user/online/total
 Accept: application/json
 
-<> 2020-05-20T104251.200.json
-
 ###
 
 GET http://127.0.0.1:8081/listener/user/list
 Accept: application/json
 
-<> 2020-05-20T103135.200.json
-
 ###
 
 PUT http://127.0.0.1:8081/mybits/user/edit/2/lisisi
 Content-Type: application/json
-
-<> 2020-05-19T044711.500.json
 
 ###
 
 GET http://127.0.0.1:8081/mybits/user/list
 Accept: application/json
 
-<> 2020-05-19T044701.200.json
-
 ###
 
 POST http://127.0.0.1:8081/mybits/user/new
 Content-Type: application/json
-
-<> 2020-05-19T044656.200.json
 
 ###
 
 PUT http://127.0.0.1:8081/mybits/user/edit/2/lisisi
 Content-Type: application/json
 
-<> 2020-05-19T043452.500.json
-
 ###
 
 GET http://127.0.0.1:8081/mybits/user/list
 Accept: application/json
 
-<> 2020-05-19T043145.200.json
-
 ###
 
 GET http://127.0.0.1:8081/mybits/user/zhangsan
 Accept: application/json
-
-<> 2020-05-19T041640.200.json
 
 ###
 
 POST http://127.0.0.1:8081/mybits/user/new
 Content-Type: application/json
 
-<> 2020-05-19T041635.200.json
-
 ###
 
 POST http://127.0.0.1:8081/mybits/user/new
 Content-Type: application/json
 
-<> 2020-05-19T041454.200.json
-
 ###
 
 GET http://127.0.0.1:8081/mybits/user/zhangsan
 Accept: application/json
-
-<> 2020-05-19T035113.200.json
 
 ###
 
 GET http://127.0.0.1:8081/mybits/user/zhangsan1
 Accept: application/json
 
-<> 2020-05-19T035030.200.json
-
 ###
 
 GET http://127.0.0.1:8081/mybits/user/zhangsan
 Accept: application/json
-
-<> 2020-05-19T034936.200.json
 
 ###
 
 
 GET http://127.0.0.1:8081/mybits/user/list
 Accept: application/json
-
-<> 2020-05-19T034308.200.json
 
 ###
 
