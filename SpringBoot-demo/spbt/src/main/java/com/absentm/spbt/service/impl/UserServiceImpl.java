@@ -4,6 +4,7 @@ import com.absentm.spbt.dao.UserMapper;
 import com.absentm.spbt.entity.User;
 import com.absentm.spbt.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -34,16 +35,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int addUser(User user) {
         return userMapper.addNewUser(user);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int updateUserById(User user) {
         return userMapper.updateUserById(user);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int deleteUserById(Integer id) {
         return userMapper.deleteUserById(id);
     }
