@@ -1,4 +1,3 @@
-
 GET http://127.0.0.1:8081/redis/test
 Accept: application/json
 
@@ -29,10 +28,6 @@ Accept: application/json
 
 ###
 
-PUT http://127.0.0.1:8081/mybits/user/edit/2/lisisi
-Content-Type: application/json
-
-###
 
 GET http://127.0.0.1:8081/mybits/user/list
 Accept: application/json
@@ -49,46 +44,18 @@ Content-Type: application/json
 
 ###
 
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
 
 GET http://127.0.0.1:8081/mybits/user/zhangsan
 Accept: application/json
 
 ###
 
-POST http://127.0.0.1:8081/mybits/user/new
-Content-Type: application/json
-
-###
-
-POST http://127.0.0.1:8081/mybits/user/new
-Content-Type: application/json
-
-###
-
-GET http://127.0.0.1:8081/mybits/user/zhangsan
-Accept: application/json
-
-###
 
 GET http://127.0.0.1:8081/mybits/user/zhangsan1
 Accept: application/json
 
 ###
 
-GET http://127.0.0.1:8081/mybits/user/zhangsan
-Accept: application/json
-
-###
-
-
-GET http://127.0.0.1:8081/mybits/user/list
-Accept: application/json
-
-###
 
 GET http://127.0.0.1:8081/aop/test/AOP
 Accept: application/json
